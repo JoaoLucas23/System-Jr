@@ -1,4 +1,4 @@
-node_modules
 *.json
+*.env
 *.md
-.env
+node_modules
