@@ -1,1 +1,8 @@
+<<<<<<< HEAD
 node_modules
+=======
+node_modules
+*.json
+*.md
+.env
+>>>>>>> 44af473e245c7fc779bb4f3473f673c2a87d901f
