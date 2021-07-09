@@ -1,4 +1,8 @@
-node_modules
 *.json
+*.env
 *.md
+<<<<<<< HEAD
 .env
+=======
+node_modules
+>>>>>>> upstream/main
