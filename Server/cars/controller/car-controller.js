@@ -12,6 +12,7 @@ router.post('/', async (req, res) => {
       price: req.body.price,
       km: req.body.km,
       observation: req.body.observation,
+      user: req.body.user,
     };
 
     await CarService.createCar(car);
