@@ -8,6 +8,7 @@ router.post('/', async (req, res) => {
       email: req.body.email,
       password: req.body.password,
       image: req.body.image,
+      phone: req.body.phone,
       role: 'user',
     };
 
