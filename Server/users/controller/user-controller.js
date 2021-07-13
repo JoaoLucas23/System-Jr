@@ -50,6 +50,7 @@ router.put('/user/:id', async (req, res) => {
   }
 });
 
+
 router.delete('/user/:id', async (req, res) => {
   try {
     const userId = req.params.id;
@@ -62,3 +63,4 @@ router.delete('/user/:id', async (req, res) => {
 });
 
 module.exports= router;
+

@@ -36,6 +36,7 @@ const User = sequelize.define('Users', {
   },
 });
 
+
 User.sync({alter: false, force: false})
   .then(() => console.log('A tabela Users foi (re)criada'))
   .catch((error) => console.log(error));
