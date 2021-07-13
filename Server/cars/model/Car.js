@@ -32,6 +32,10 @@ const Car = sequelize.define('Users', {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
+  km: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
   observation: {
     type: DataTypes.STRING,
     allowNull: false,
