@@ -42,3 +42,5 @@ User.sync({alter: false, force: false})
   .catch((error) => console.log(error));
 
 module.exports = User;
+
+// lalalala
