@@ -1,7 +1,5 @@
 const router = require('express').Router();
-const {route} = require('../../cars/controller/car-controller');
 const UserService = require('../services/UserService');
-const {response} = require('express');
 const {loginMiddleware,
   notLoggedIn,
   jwtMiddleware,
