@@ -1,5 +1,10 @@
 const router = require('express').Router();
 const UserService = require('../services/UserService');
+const {loginMiddleware,
+  notLoggedIn,
+  jwtMiddleware,
+  checkRole,
+} = require('../../middlewares/auth-middlewares');
 
 router.post('/', async (req, res) => {
   try {
@@ -20,7 +25,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.get('/', async (req, res) => {
+router.get('/', jwtMiddleware, async (req, res) => {
   try {
     const users = await UserService.getAllUsers();
     res.status(200).json(users);
@@ -29,7 +34,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/user/:id', async (req, res) => {
+router.get('/user/:id', jwtMiddleware, async (req, res) => {
   try {
     const userId = req.params.id;
     const user = await UserService.getUserById(userId);
@@ -40,28 +45,47 @@ router.get('/user/:id', async (req, res) => {
   }
 });
 
-router.put('/user/:id', async (req, res) => {
+router.put('/user/:id', jwtMiddleware, async (req, res) => {
   try {
     const userId = req.params.id;
-    await UserService.updateUser(userId, req.body);
+    await UserService.updateUser(userId, req.user.id, req.user.role, req.body);
 
+    res.status(204).end();
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+});
+
+
+router.delete('/user/:id',
+  jwtMiddleware, checkRole('admin'),
+  async (req, res) => {
+    try {
+      const userId = req.params.id;
+      await UserService.deleteUser(userId, req.user.id);
+
+      res.status(204).end();
+    } catch (error) {
+      res.status(400).send(error.message);
+    }
+  },
+);
+
+router.post('/login', notLoggedIn, loginMiddleware);
+
+router.get('/logout', jwtMiddleware, (req, res) => {
+  try {
+    res.clearCookie('jwt');
     res.status(204).end();
   } catch (error) {
     console.log(error);
   }
 });
 
+router.get('/me', jwtMiddleware, async (req, res) => {
+  const user = await UserService.getCurrentUser(req.user.id);
 
-router.delete('/user/:id', async (req, res) => {
-  try {
-    const userId = req.params.id;
-    await UserService.deleteUser(userId);
-
-    res.status(204).end();
-  } catch (error) {
-    console.log(error);
-  }
+  res.status(200).json(user);
 });
 
 module.exports= router;
-

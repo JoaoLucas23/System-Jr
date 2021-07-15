@@ -7,9 +7,14 @@ const app = express();
 const cors = require('cors');
 app.use(cors());
 
+const cookieParser = require('cookie-parser');
+app.use(cookieParser());
+
 app.use(express.urlencoded({
   extended: true,
 }));
+
+require('./auth');
 
 app.use(express.json());
 
@@ -18,5 +23,8 @@ app.use('/users', userRouter);
 
 const carRouter = require('../cars/controller/car-controller');
 app.use('/cars', carRouter);
+
+const errorHandler = require('../middlewares/error-handler');
+app.use(errorHandler);
 
 module.exports = app;
