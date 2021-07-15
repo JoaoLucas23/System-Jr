@@ -5,25 +5,31 @@ const {loginMiddleware,
   jwtMiddleware,
   checkRole,
 } = require('../../middlewares/auth-middlewares');
+const objetcFilter = require('../../middlewares/object-filter');
+const userValidate = require('../../middlewares/user-validator');
 
-router.post('/', async (req, res) => {
-  try {
-    const user = {
-      name: req.body.name,
-      email: req.body.email,
-      password: req.body.password,
-      image: req.body.image,
-      phone: req.body.phone,
-      role: 'user',
-    };
+router.post('/',
+  objetcFilter('body', ['name', 'email', 'image', 'password']),
+  userValidate('createUser'),
+  async (req, res) => {
+    try {
+      const user = {
+        ...req.body,
+        name: req.body.name,
+        email: req.body.email,
+        password: req.body.password,
+        image: req.body.image,
+        phone: req.body.phone,
+        role: 'user',
+      };
 
-    await UserService.createUser(user);
+      await UserService.createUser(user);
 
-    res.status(201).end();
-  } catch (error) {
-    console.log(error);
-  }
-});
+      res.status(201).end();
+    } catch (error) {
+      console.log(error);
+    }
+  });
 
 router.get('/', jwtMiddleware, async (req, res) => {
   try {
@@ -45,16 +51,20 @@ router.get('/user/:id', jwtMiddleware, async (req, res) => {
   }
 });
 
-router.put('/user/:id', jwtMiddleware, async (req, res) => {
-  try {
-    const userId = req.params.id;
-    await UserService.updateUser(userId, req.user.id, req.user.role, req.body);
+router.put('/user/:id', jwtMiddleware,
+  objetcFilter('body', ['name', 'email', 'image']),
+  userValidate('updateUser'),
+  async (req, res) => {
+    try {
+      const userId = req.params.id;
+      await UserService.updateUser(
+        userId, req.user.id, req.user.role, req.body);
 
-    res.status(204).end();
-  } catch (error) {
-    res.status(400).send(error.message);
-  }
-});
+      res.status(204).end();
+    } catch (error) {
+      res.status(400).send(error.message);
+    }
+  });
 
 
 router.delete('/user/:id',
@@ -71,7 +81,7 @@ router.delete('/user/:id',
   },
 );
 
-router.post('/login', notLoggedIn, loginMiddleware);
+router.post('/login', notLoggedIn, userValidate('login'), loginMiddleware);
 
 router.get('/logout', jwtMiddleware, (req, res) => {
   try {
