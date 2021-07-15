@@ -1,6 +1,4 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-const {body, validationResult} = require('express-validator');
+const {body} = require('express-validator');
 const validate = require('./validate');
 
 function getValidations(method) {
