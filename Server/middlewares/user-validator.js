@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 const {body, validationResult} = require('express-validator');
 const validate = require('./validate');
 
@@ -67,19 +68,3 @@ function userValidate(method) {
 }
 
 module.exports = userValidate;
-=======
-const{body} = require('express-validator');
-
-// CreateUser: name, email, user, password, iamge, phone, role
-// Login: Email, password
-//
-
-
-
-
-function getValidations(method) {
-    switch (method) {
-
-    }
-}
->>>>>>> 7427a997b112fbecd64de2b9b0aeafb613bc13e3
