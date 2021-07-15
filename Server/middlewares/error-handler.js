@@ -1,5 +1,5 @@
-const AuthError = require('../errors/AuthError');
-const QueryError = require('../errors/QuerryError');
+const AuthError = require('../errors/AuthorizationError');
+const QueryError = require('../errors/QueryError');
 const {UniqueConstraintError} = require('sequelize');
 
 function errorHandler(error, req, res, next) {
