@@ -24,4 +24,7 @@ app.use('/users', userRouter);
 const carRouter = require('../cars/controller/car-controller');
 app.use('/cars', carRouter);
 
+const errorHandler = require('../middlewares/error-handler');
+app.use(errorHandler);
+
 module.exports = app;

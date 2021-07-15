@@ -12,15 +12,15 @@ const Car = sequelize.define('Cars', {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  marca: {
+  brand: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  cor: {
+  color: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  ano: {
+  year: {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
