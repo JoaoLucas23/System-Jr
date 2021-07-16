@@ -1,5 +1,6 @@
 const sequelize = require('../../database/index');
 const {DataTypes} = require('sequelize');
+const Car = require('../../cars/model/Car');
 
 const User = sequelize.define('Users', {
   id: {
@@ -36,8 +37,17 @@ const User = sequelize.define('Users', {
   },
 });
 
+User.hasMany(Car, {
+  onDelete: 'cascade',
+});
+Car.belongsTo(User);
+
 User.sync({alter: false, force: false})
   .then(() => console.log('A tabela Users foi (re)criada'))
+  .catch((error) => console.log(error));
+
+Car.sync({alter: false, force: false})
+  .then(() => console.log('A tabela Cars foi (re)criada'))
   .catch((error) => console.log(error));
 
 module.exports = User;

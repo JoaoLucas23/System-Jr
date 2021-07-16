@@ -1,68 +1,79 @@
 const router = require('express').Router();
+const {jwtMiddleware} = require('../../middlewares/auth-middlewares');
 const CarService = require('../services/CarService');
+const {requestFilter} = require('../../middlewares/object-filter');
+const {productValidate} = require('../../middlewares/car-validator');
 
-router.post('/', async (req, res) => {
-  try {
-    const car = {
-      model: req.body.model,
-      marca: req.body.marca,
-      cor: req.body.cor,
-      image: req.body.image,
-      ano: req.body.ano,
-      price: req.body.price,
-      km: req.body.km,
-      observation: req.body.observation,
-      user: req.body.user,
-    };
+router.post('/',
+  jwtMiddleware,
+  requestFilter(
+    'body',
+    ['model', 'brand', 'image', 'price', 'condition', 'color', 'km', 'obs']),
+  productValidate('createProduct'),
+  async (req, res, next) => {
+    try {
+      const car = {
+        ...req.body,
+        UserId: req.user.id,
+      };
 
-    await CarService.createCar(car);
+      await CarService.createCar(car);
 
-    res.status(201).end();
-  } catch (error) {
-    console.log(error);
-  }
-});
+      res.status(201).end();
+    } catch (error) {
+      next(error);
+    }
+  });
 
-router.get('/', async (req, res) => {
-  try {
-    const cars = await CarService.getAllCars();
-    res.status(200).json(cars);
-  } catch (error) {
-    console.log(error);
-  }
-});
+router.get('/', jwtMiddleware,
+  async (req, res, next) => {
+    try {
+      const cars = await CarService.getAllCars();
+      res.status(200).json(cars);
+    } catch (error) {
+      next(error);
+    }
+  });
 
-router.get('/car/:id', async (req, res) => {
-  try {
-    const carId = req.params.id;
-    const car = await CarService.getCarById(carId);
+router.get('/:id', jwtMiddleware,
+  async (req, res, next) => {
+    try {
+      const carId = req.params.id;
+      const car = await CarService.getCarById(carId);
 
-    res.status(200).json(car);
-  } catch (error) {
-    console.log(error);
-  }
-});
+      res.status(200).json(car);
+    } catch (error) {
+      next(error);
+    }
+  });
 
-router.put('/car/:id', async (req, res) => {
-  try {
-    const carId = req.params.id;
-    await CarService.updateCar(carId, req.body);
+router.put('/:id', jwtMiddleware,
+  requestFilter(
+    'body',
+    ['model', 'brand', 'image', 'price',
+      'condition', 'color', 'km', 'description']),
+  productValidate('updateProduct'),
+  async (req, res, next) => {
+    try {
+      const carId = req.params.id;
+      await CarService.updateCar(carId, req.user.id, req.user.role, req.body);
 
-    res.status(204).end();
-  } catch (error) {
-    console.log(error);
-  }
-});
+      res.status(204).end();
+    } catch (error) {
+      next(error);
+    }
+  });
 
-router.delete('/car/:id', async (req, res) => {
-  try {
-    const carId = req.params.id;
-    await CarService.deleteCar(carId);
+router.delete('/:id', jwtMiddleware,
+  async (req, res, next) => {
+    try {
+      const carId = req.params.id;
+      await CarService.deleteCar(carId, req.user.id, req.user.role);
 
-    res.status(204).end();
-  } catch (error) {
-    console.log(error);
-  }
-});
+      res.status(204).end();
+    } catch (error) {
+      next(error);
+    }
+  });
 
 module.exports= router;

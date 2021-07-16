@@ -1,4 +1,6 @@
 const Car = require('../model/Car');
+const permissionError = require('../../errors/PermissionError');
+const QueryError = require('../../errors/QueryError');
 
 class CarService {
   async createCar(car) {
@@ -6,19 +8,47 @@ class CarService {
   }
 
   async getAllCars() {
-    return await Car.findAll({raw: true});
+    const result = await Car.findAll({raw: true});
+    return result;
   }
 
   async getCarById(id) {
-    return await Car.findByPk(id, {raw: true});
+    const car = await Car.findByPk(id, {raw: true});
+
+    if (!car) {
+      throw new QueryError(`Não foi encontrado nenhum carro com o ID ${id}`);
+    }
+
+    return car;
   }
 
-  async updateCar(id, body) {
-    await Car.update(body, {where: {id: id}});
+  async updateCar(id, reqUserId, reqUserRole, body) {
+    const car = await Car.findByPk(id, {raw: true});
+    if (!car) {
+      throw new QueryError(`Não foi encontrado nenhum carro com o ID ${id}`);
+    }
+
+    const isAdmin = reqUserRole === 'admin';
+    const isProductOwner = reqUserId == car.UserId;
+
+    if (!isAdmin && !isProductOwner) {
+      throw new permissionError(
+        'Você não tem permição para editar esse carro!');
+    }
+
+    await car.update(body, {where: {id: id}});
   }
 
-  async deleteCar(id) {
-    await Car.destroy({where: {id: id}});
+  async deleteCar(id, reqUserId, reqUserRole) {
+    const isAdmin = reqUserRole === 'admin';
+    const isProductOwner = reqUserId == car.UserId;
+
+    if (!isAdmin && !isProductOwner) {
+      throw new permissionError(
+        'Você não tem permição para deletar esse carro!');
+    }
+
+    await car.delete();
   }
 }
 

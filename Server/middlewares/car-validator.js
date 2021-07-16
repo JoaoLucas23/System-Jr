@@ -8,8 +8,8 @@ function getValidator(method) {
       body('model')
         .exists()
         .withMessage('Você deve inserir um modelo!')
-        .isAlphanumeric('pt-BR', {ignore: ' '})
-        .withMessage('O modelo só pode conter letras e números'),
+        .notEmpty()
+        .withMessage('O campo modelo não pode ficar vazio!'),
       body('brand')
         .exists()
         .withMessage('Você deve inserir uma marca!')
@@ -35,22 +35,61 @@ function getValidator(method) {
       body('price')
         .exists()
         .withMessage('Você deve inserir um valor')
-        .isNumeric()
+        .isFloat({gt: 0})
         .withMessage('O preço deve conter apenas números'),
       body('km')
         .exists()
         .withMessage('O campo de km atual deve ser preenchido')
         .isNumeric()
         .withMessage('A km atual conter apenas números'),
-      body('obs')
+      body('description')
         .optional()
         .isAlphanumeric()
         .withMessage('As observações devem conter apenas letras e números'),
+      body('condition')
+        .exists()
+        .withMessage('Voce deve enviar a condicao do produto!')
+        .isIn(['new', 'used']),
     ];
   };
   case 'UpdateCar': {
     return [
-
+      body('model')
+        .notEmpty()
+        .withMessage('O modelo só pode conter letras e números'),
+      body('brand')
+        .optional()
+        .isAlpha('pt-BR', {ignore: ' '})
+        .withMessage('A marca só pode conter letras'),
+      body('color')
+        .optional()
+        .isAlpha('pt-BR', {ignore: ' '})
+        .withMessage('A cor só pode conter letras'),
+      body('image')
+        .optional()
+        .isURL()
+        .withMessage('A imagem deve ser uma URL'),
+      body('year')
+        .optional()
+        .isNumeric()
+        .withMessage('O ano deve conter apenas numeros')
+        .isLength({min: 4}, {max: 4})
+        .withMessage('O ano deve ter 4 dígitos'),
+      body('price')
+        .optional()
+        .isFloat({gt: 0})
+        .withMessage('O preço deve conter apenas números'),
+      body('km')
+        .optional()
+        .isNumeric()
+        .withMessage('A km atual conter apenas números'),
+      body('description')
+        .optional()
+        .isAlphanumeric()
+        .withMessage('As observações devem conter apenas letras e números'),
+      body('condition')
+        .optional()
+        .isIn(['new', 'used']),
     ];
   };
   }

@@ -29,25 +29,22 @@ const Car = sequelize.define('Cars', {
     allowNull: false,
   },
   price: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-  },
-  km: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-  },
-  observation: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  user: {
-    type: DataTypes.INTEGER,
+  km: {
+    type: DataTypes.FLOAT,
+    allowNull: false,
+  },
+  description: {
+    type: DataTypes.TEXT,
+    allowNull: false,
+  },
+  condition: {
+    type: DataTypes.ENUM,
+    values: ['new', 'used'],
     allowNull: false,
   },
 });
-
-Car.sync({alter: false, force: false})
-  .then(() => console.log('A tabela Cars foi (re)criada'))
-  .catch((error) => console.log(error));
 
 module.exports = Car;
