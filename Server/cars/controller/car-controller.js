@@ -1,19 +1,28 @@
 const router = require('express').Router();
 const {jwtMiddleware} = require('../../middlewares/auth-middlewares');
 const CarService = require('../services/CarService');
-const {requestFilter} = require('../../middlewares/object-filter');
-const {productValidate} = require('../../middlewares/car-validator');
+const objectFilter = require('../../middlewares/object-filter');
+const productValidate = require('../../middlewares/car-validator');
 
 router.post('/',
   jwtMiddleware,
-  requestFilter(
+  objectFilter(
     'body',
-    ['model', 'brand', 'image', 'price', 'condition', 'color', 'km', 'obs']),
-  productValidate('createProduct'),
+    ['model', 'brand', 'color', 'year', 'image', 'price',
+      'km', 'description', 'condition']),
+  productValidate('createCar'),
   async (req, res, next) => {
     try {
       const car = {
-        ...req.body,
+        model: req.body.model,
+        brand: req.body.brand,
+        color: req.body.color,
+        year: req.body.year,
+        image: req.body.image,
+        price: req.body.price,
+        km: req.body.km,
+        description: req.body.description,
+        condition: req.body.condition,
         UserId: req.user.id,
       };
 
@@ -48,7 +57,7 @@ router.get('/:id', jwtMiddleware,
   });
 
 router.put('/:id', jwtMiddleware,
-  requestFilter(
+  objectFilter(
     'body',
     ['model', 'brand', 'image', 'price',
       'condition', 'color', 'km', 'description']),

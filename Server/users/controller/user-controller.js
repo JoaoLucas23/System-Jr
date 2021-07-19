@@ -2,8 +2,8 @@ const router = require('express').Router();
 const UserService = require('../services/UserService');
 const {loginMiddleware,
   notLoggedIn,
-  jwtMiddleware,
   checkRole,
+  jwtMiddleware,
 } = require('../../middlewares/auth-middlewares');
 const objetcFilter = require('../../middlewares/object-filter');
 const userValidate = require('../../middlewares/user-validator');
@@ -14,7 +14,6 @@ router.post('/',
   async (req, res, next) => {
     try {
       const user = {
-        ...req.body,
         name: req.body.name,
         email: req.body.email,
         password: req.body.password,
@@ -31,7 +30,7 @@ router.post('/',
     }
   });
 
-router.get('/', jwtMiddleware, async (req, res, next) => {
+router.get('/', jwtMiddleware, async (req, res) => {
   try {
     const users = await UserService.getAllUsers();
     res.status(200).json(users);
@@ -83,7 +82,7 @@ router.delete('/user/:id',
 
 router.post('/login', notLoggedIn, userValidate('login'), loginMiddleware);
 
-router.get('/logout', jwtMiddleware, (req, res, next) => {
+router.get('/logout', jwtMiddleware, (req, res) => {
   try {
     res.clearCookie('jwt');
     res.status(204).end();
@@ -92,7 +91,7 @@ router.get('/logout', jwtMiddleware, (req, res, next) => {
   }
 });
 
-router.get('/me', jwtMiddleware, async (req, res, next) => {
+router.get('/me', jwtMiddleware, async (req, res) => {
   try {
     const user = await UserService.getCurrentUser(req.user.id);
 
