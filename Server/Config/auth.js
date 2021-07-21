@@ -1,13 +1,13 @@
 const passport = require('passport');
 const bcrypt = require('bcrypt');
-const localStrategy = require('passport-local').Strategy;
+const LocalStrategy = require('passport-local').Strategy;
 const JwtStrategy = require('passport-jwt').Strategy;
 const User = require('../users/model/User');
 const AuthorizationError = require('../errors/AuthorizationError');
 
 passport.use(
   'login',
-  new localStrategy(
+  new LocalStrategy(
     {
       usernameField: 'email',
       passwordField: 'password',

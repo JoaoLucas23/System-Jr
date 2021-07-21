@@ -1,6 +1,5 @@
-const passport = require('passport');
 const jwt = require('jsonwebtoken');
-
+const passport = require('passport');
 
 function loginMiddleware(req, res, next) {
   passport.authenticate(
@@ -23,7 +22,8 @@ function loginMiddleware(req, res, next) {
             };
 
             const token = jwt.sign({user: body}, process.env.SECRET_KEY,
-              {expiresIn: process.env.JWT_EXPIRTION});
+              {expiresIn: process.env.JWT_EXPIRATION});
+
             res.cookie('jwt', token, {
               httpOnly: true,
               secure: process.env.NODE_ENV === 'production',
@@ -31,24 +31,27 @@ function loginMiddleware(req, res, next) {
 
             res.status(204).end();
           },
+
         );
       } catch (error) {
         next(error);
       }
     },
   )(req, res, next);
-}
+};
 
 function jwtMiddleware(req, res, next) {
   passport.authenticate('jwt', {session: false}, (err, user, info) => {
     if (err) {
       return next(err);
     }
+
     if (!user) {
-      return res.status(401).send('Fazer Login para realizar essa ação');
+      return res.status(401).send(
+        'Você precisa estar logado para realizar essa ação');
     }
 
-    req. user = user;
+    req.user = user;
 
     next();
   })(req, res, next);
@@ -60,23 +63,24 @@ function checkRole(role) {
       if (req.user.role === role) {
         next();
       } else {
-        res.status(401).send('Você ão tem permissão pararealizar esta ação');
+        res.status(401).send('Voce nao tem permicao para realizar essa acao');
       }
     }
   };
-}
+};
 
 function notLoggedIn(req, res, next) {
   const token = req.cookies['jwt'];
   if (token) {
     jwt.verify(token, process.env.SECRET_KEY, (err, decoded) => {
       if (!(err instanceof jwt.TokenExpiredError)) {
-        res.status(400).send('Você já realizou o Login');
+        res.status(400).send('Voce ja esta logado no sistema');
       }
     });
   }
+
   next();
-}
+};
 
 module.exports = {
   loginMiddleware,

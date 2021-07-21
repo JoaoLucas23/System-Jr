@@ -52,10 +52,11 @@ function getValidator(method) {
         .isIn(['new', 'used']),
     ];
   };
-  case 'UpdateCar': {
+  case 'updateCar': {
     return [
       body('model')
-        .notEmpty()
+        .optional()
+        .isAlphanumeric('pt-BR', {ignore: ' '})
         .withMessage('O modelo só pode conter letras e números'),
       body('brand')
         .optional()

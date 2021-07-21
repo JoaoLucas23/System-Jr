@@ -19,7 +19,7 @@ function getValidations(method) {
   };
   case 'createUser': {
     return [
-      body('namel')
+      body('name')
         .exists()
         .withMessage('Você deve enviar um nome!')
         .isAlpha('pt-BR', {ignore: ' '})
@@ -43,7 +43,7 @@ function getValidations(method) {
   };
   case 'updateUser': {
     return [
-      body('namel')
+      body('name')
         .optional()
         .isAlpha('pt-BR', {ignore: ' '})
         .withMessage('Seu nome só pode conter letras!'),
