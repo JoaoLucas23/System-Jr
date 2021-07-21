@@ -36,19 +36,19 @@ class CarService {
         'Você não tem permição para editar esse carro!');
     }
 
-    await car.update(body, {where: {id: id}});
+    await Car.update(body, {where: {id: id}});
   }
 
   async deleteCar(id, reqUserId, reqUserRole) {
     const isAdmin = reqUserRole === 'admin';
-    const isProductOwner = reqUserId == car.UserId;
+    const isProductOwner = reqUserId == Car.UserId;
 
     if (!isAdmin && !isProductOwner) {
       throw new permissionError(
         'Você não tem permição para deletar esse carro!');
     }
 
-    await car.delete();
+    await Car.delete();
   }
 }
 

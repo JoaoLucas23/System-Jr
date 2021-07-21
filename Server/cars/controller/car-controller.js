@@ -61,7 +61,7 @@ router.put('/:id', jwtMiddleware,
     'body',
     ['model', 'brand', 'image', 'price',
       'condition', 'color', 'km', 'description']),
-  productValidate('updateProduct'),
+  productValidate('updateCar'),
   async (req, res, next) => {
     try {
       const carId = req.params.id;
