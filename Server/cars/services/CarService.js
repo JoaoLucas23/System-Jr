@@ -8,12 +8,20 @@ class CarService {
   }
 
   async getAllCars() {
-    const result = await Car.findAll({raw: true});
+    const result = await Car.findAll({raw: true, attributes:
+      {
+        exclude: ['createdAt', 'updatedAt'],
+      },
+    });
     return result;
   }
 
   async getCarById(id) {
-    const car = await Car.findByPk(id, {raw: true});
+    const car = await Car.findByPk(id, {raw: true, attributes:
+      {
+        exclude: ['createdAt', 'updatedAt'],
+      },
+    });
 
     if (!car) {
       throw new QueryError(`Não foi encontrado nenhum carro com o ID ${id}`);
@@ -40,6 +48,8 @@ class CarService {
   }
 
   async deleteCar(id, reqUserId, reqUserRole) {
+    const car = await Car.findByPk(id);
+
     const isAdmin = reqUserRole === 'admin';
     const isProductOwner = reqUserId == Car.UserId;
 
@@ -48,7 +58,7 @@ class CarService {
         'Você não tem permição para deletar esse carro!');
     }
 
-    await Car.delete();
+    await car.destroy();
   }
 }
 
