@@ -1,0 +1,14 @@
+.botaoCadastro {
+    width: 80%;
+    margin-left: 20%;
+    text-align: center;
+  }
+  .itens {
+    display: inline-flex;
+    margin-left: 20%;
+  }
+  
+  .hoverable {
+    text-align: center;
+    margin-left: 10%;
+  }
