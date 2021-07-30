@@ -1,5 +1,5 @@
 .Home{
-    background-color: #6e0ad6;
+    background-color: #000766;
     width: 100%;
     height: 100%;
 }
@@ -19,8 +19,17 @@
 }
 
 .flex-button{
-    margin-right: 12%;
+    margin-right: 0%;
     flex: 1;
+}
+
+.Titulo{
+    font-family: sans-serif;
+    font-size: 500%;
+    justify-content: center;
+    line-height: 21px;
+    text-align: center; 
+    color: #010112;
 }
 
 .Conteudo{
@@ -31,7 +40,7 @@
     margin-top: 1%;
     font-family: sans-serif;
     font-size: xx-large;
-    color: #f6f6f6;
+    color: #f0efe4;
 }
 
 #LogoV{
@@ -39,15 +48,16 @@
 }
 
 .Login-button{
+    margin-right: 3%;
     width: 150px;
     height: 50px;
     flex: 1;
     float: right;
-    background-color: hsl(27, 93%, 55%);
+    background-color: #ffdd30;
     border-color: hsla(0, 0%, 0%);
     border-radius: 30px;
     border-width: 0px;
-    color: hsl(0, 0%, 100%);
+    color: black;
     font-family: sans-serif;
     font-size: 20px;
     font-weight: 700;
@@ -61,4 +71,40 @@ section.container{
     padding: 0;
     width: 100%;
     max-width: 100%;
+}
+
+/* Add a black background color to the top navigation */
+.topnav {
+    background-color: #000766;
+    overflow: hidden;
+  }
+  
+  /* Style the links inside the navigation bar */
+  .topnav a {
+    float: left;
+    color: #f0efe4;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  /* Change the color of links on hover */
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  /* Add a color to the active/current link */
+  .topnav a.active {
+    background-color: #ffdd30;
+    color: black;
+  }
+
+  .logo-image{
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-top: -6px;
 }
