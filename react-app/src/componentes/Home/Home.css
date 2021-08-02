@@ -7,7 +7,7 @@
 .Header{
     background-color: #f6f6f6;
     display: flex;
-    flex: 1 1 auto;
+    flex: auto 1 1;
     flex-direction: row;
     align-items: center;
 }
@@ -15,21 +15,23 @@
 .flex-title{
     margin: 1.5%;
     margin-left: 5%;
+    margin-right: auto;
     flex: 1;
 }
 
 .flex-button{
-    margin-right: 0%;
+    margin-right: 1%;
+    margin-left: 3%;
     flex: 1;
 }
 
 .Titulo{
-    font-family: sans-serif;
+    font-family: 'Noto Sans';
     font-size: 500%;
     justify-content: center;
     line-height: 21px;
     text-align: center; 
-    color: #010112;
+    color: #010112;   
 }
 
 .Conteudo{
@@ -38,7 +40,7 @@
 }
 .Conteudo figcaption{
     margin-top: 1%;
-    font-family: sans-serif;
+    font-family: 'Rubik';
     font-size: xx-large;
     color: #f0efe4;
 }
@@ -58,7 +60,7 @@
     border-radius: 30px;
     border-width: 0px;
     color: black;
-    font-family: sans-serif;
+    font-family: 'Noto Sans';
     font-size: 20px;
     font-weight: 700;
     justify-content: center;

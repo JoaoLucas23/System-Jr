@@ -17,8 +17,7 @@ export default function Home() {
                 <div className="flex-title">
                     <img src={logo}
                         alt="logo"
-                        width='120px'
-                        height='120px' 
+                        height = '120px'
                         padding='0' 
                     />
                 </div>
@@ -46,10 +45,9 @@ export default function Home() {
                 <img id="LogoV"
                     src={logo}
                     alt="variante logo"
-                    height='150px'
-                    width="300px" 
+                    height='200px'
                 />
-                <figcaption>O maior, melhor e mais original site de compras e vendas de carros</figcaption>
+                <figcaption>O maior, melhor e mais original site de compras e vendas de carros.</figcaption>
             </figure>
         </div>
 
