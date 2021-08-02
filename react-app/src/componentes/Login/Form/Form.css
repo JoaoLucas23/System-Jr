@@ -1,17 +1,10 @@
 .Form {
     background-color: #f6f6f6
   }
-  .Form img {
-    max-width: 250px;
-    margin: auto;
-    display: block;
-    padding-top: 25%;
-    padding-bottom: 5%;
-  }
   
   .Form button {
-    background-color: hsl(27 93% 55%);
-    color: #FFFFFF;
+    background-color: #ffdd30;
+    color: #010112;
     padding: 8px 16px;
     margin: 8px 0;
     border: none;
@@ -21,12 +14,15 @@
     font-size: 120%;
     border-radius: 24px;
     text-align: center;
+    margin-left: 30%;
     transition: all 500ms;
   }
   
   .Form button:hover {
-    transform: scale(0.98);
+    transform: scale(0.95);
     transition: all 500ms;
+    background-color: #eecd29;
+    font-style: italic;
   }
   
   input[type=text], input[type=password] {
