@@ -23,11 +23,13 @@ export default function Product() {
   if(product) loadedProducts = product.map(productsToCards);
   return (
     <div className="Product">
-      <Link to={`${useRouteMatch().path}/cadastro`}>
-        <Button className="botaoCadastro">
-          Cadastrar Produto
-        </Button>
-      </Link>
+      <div className="botao-cadastro">
+        <Link to={`${useRouteMatch().path}/cadastro`}>
+          <Button id="botaoCadastro">
+            Cadastrar Produto
+          </Button>
+        </Link>
+      </div>
       <div className="itens">
         {loadedProducts}
       </div>
