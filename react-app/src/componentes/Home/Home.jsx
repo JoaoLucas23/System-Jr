@@ -31,7 +31,7 @@ export default function Home() {
                         </button>
                     </Link>
                     
-                    <Link to="/login">
+                    <Link to="/cadastro">
                         <button className="Login-button">
                             Cadastrar
                         </button>

@@ -4,6 +4,7 @@ import axios from 'axios';
 import Home from './componentes/Home/Home'
 import Login from './componentes/Login/Login';
 import Dashboard from './componentes/Dashboard/Dashboard';
+import Cadastro from './componentes/Cadastro/Cadastro';
 
 function App() {
   axios.defaults.baseURL = process.env.REACT_APP_API_URL;
@@ -15,6 +16,9 @@ function App() {
         <Route path="/dashboard">
             <Dashboard />
           </Route>
+        <Route path="/cadastro">
+          <Cadastro />
+        </Route>
         <Route path="/login">
             <Login />
           </Route>

@@ -1,0 +1,37 @@
+
+body{
+    background-image: linear-gradient(#000766,#010112);
+}
+
+.formulario input{
+    width: 100%;
+}
+
+.formulario button {
+    background-color: #ffdd30;
+    color: #010112;
+    padding: 8px 16px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    height: 20%;
+    width: 35%;
+    font-size: 120%;
+    border-radius: 24px;
+    text-align: center;
+    margin-left: 30%;
+    transition: all 500ms;
+}
+
+.formulario button:hover {
+    transform: scale(0.95);
+    transition: all 500ms;
+    background-color: #eecd29;
+    font-style: italic;
+}
+
+.CardTitle{
+    text-align: center;
+    font-size: 200%;
+}
+
