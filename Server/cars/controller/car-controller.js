@@ -14,6 +14,7 @@ router.post('/',
   async (req, res, next) => {
     try {
       const car = {
+        UserId: req.user.id,
         model: req.body.model,
         brand: req.body.brand,
         color: req.body.color,
@@ -23,7 +24,6 @@ router.post('/',
         km: req.body.km,
         description: req.body.description,
         condition: req.body.condition,
-        UserId: req.user.id,
       };
 
       await CarService.createCar(car);

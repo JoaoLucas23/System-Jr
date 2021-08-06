@@ -42,7 +42,7 @@ const Car = sequelize.define('Cars', {
   },
   condition: {
     type: DataTypes.ENUM,
-    values: ['new', 'used'],
+    values: ['novo', 'usado'],
     allowNull: false,
   },
 });

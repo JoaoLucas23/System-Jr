@@ -29,9 +29,7 @@ function getValidator(method) {
         .exists()
         .withMessage('Você deve inserir um ano')
         .isNumeric()
-        .withMessage('O ano deve conter apenas numeros')
-        .isLength({min: 4}, {max: 4})
-        .withMessage('O ano deve ter 4 dígitos'),
+        .withMessage('O ano deve conter apenas numeros'),
       body('price')
         .exists()
         .withMessage('Você deve inserir um valor')
@@ -49,7 +47,7 @@ function getValidator(method) {
       body('condition')
         .exists()
         .withMessage('Voce deve enviar a condicao do produto!')
-        .isIn(['new', 'used']),
+        .isIn(['novo', 'usado']),
     ];
   };
   case 'updateCar': {
@@ -90,7 +88,7 @@ function getValidator(method) {
         .withMessage('As observações devem conter apenas letras e números'),
       body('condition')
         .optional()
-        .isIn(['new', 'used']),
+        .isIn(['novo', 'usado']),
     ];
   };
   }
