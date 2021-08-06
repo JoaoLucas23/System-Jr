@@ -1,5 +1,4 @@
 import './Form.css';
-import Logo from '../../../assests/logo.jpg';
 import { Link } from 'react-router-dom';
 import {useState} from 'react';
 import axios from 'axios';
@@ -28,12 +27,6 @@ export default function Form() {
         <div className="Form">
             <form method="POST" onSubmit={handleSubmit}>
                 <div className="container2">
-                    <img src={Logo}
-                        alt="logo"
-                        width='240px'
-                        height='220px' 
-                    />
-                    <br />
                     <div id="Email">
                         <label htmlFor="email"><p>Login:</p></label>
                         <input type="text" placeholder="Digite seu email" name="email"

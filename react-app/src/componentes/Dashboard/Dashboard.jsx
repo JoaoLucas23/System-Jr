@@ -5,6 +5,9 @@ import { useHistory } from 'react-router';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Product from './Products/Products';
+import ProductProfile from './ProductProfile/ProductProfile';
+import CadastroProduto from './CadastrarProduto/CadastroProduto';
+import AlterarProduto from './AlterarProduto/AlteraProduto';
 
 import './Dashboard.css';
 
@@ -41,6 +44,15 @@ export default function Dashboard() {
           <Switch>
             <Route path="/dashboard/users">
 
+            </Route>
+            <Route path="/dashboard/products/cadastro">
+              <CadastroProduto />
+            </Route>
+            <Route path="/dashboard/products/edit/:id">
+              <AlterarProduto user={user} />
+            </Route>
+            <Route path="/dashboard/products/:id">
+              <ProductProfile user={user} />
             </Route>
             <Route path="/dashboard/products">
               <Product />

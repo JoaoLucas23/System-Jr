@@ -1,16 +1,27 @@
 .ProductCard img {
-    border-radius: 4px;
-    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
-    height: 128px;
-    width: 128px;
     object-fit: cover;
   }
   
 .ProductCard p.name {
-    font-size: 1.3rem;
+    font-size: 3vh;
   }
   
 .ProductCard p {
     color: black;
-    font-size: 0.8rem;
+    font-size: 2vh;
   }
+
+.ProductCard:hover{
+  transform: scale(1.05);
+  transition: all 500ms;
+ border-style: dashed;
+  border-color: #000766;
+}
+
+.ProductCard{
+  border-style: solid;
+  border-width: 1px;
+  border-color: #000766;
+  background-color: white;
+  height: 250px;
+}
