@@ -11,34 +11,38 @@ export default function ProductProfile(props) {
 
   const disableButton = () => ( (props.user.role !== 'admin') || (props.user.id !== (product ? product.UserId : null)) ) ? true : false;
   useEffect(() => 
-    axios.get(`/cars/${id}`)
+    axios.get(`/cars/car/${id}`)
       .then( (res) => setProduct(res.data) )
       .catch( (err) => console.log(err.response) ),
   [id])
   const handleDelete = (event) => {
     event.preventDefault();
-    axios.delete(`/cars/${id}`)
+    axios.delete(`/cars/car/${id}`)
       .then( (res) => history.push('/dashboard/products') )
       .catch( (err) => console.log(err.response) );
   }
   return (
     <div className="ProductProfile">
-      <Card style={{ width: '20rem'}}>
-        <Card.Img variant="top" src={product ? product.image : ''} />
-        <Card.Body>
-          <Card.Title>{product ? product.name : ''}</Card.Title>
-          <Card.Subtitle>{product ? product.price : ''}</Card.Subtitle>
-          <Card.Text>{product ? product.description : ''}</Card.Text>
-          <Card.Text>{product ? product.condition : ''}</Card.Text>
-          <Link style={disableButton() ? {pointerEvents: 'none'} : null} to={`/dashboard/products/edit/${id}`}>
-            <Button disabled={disableButton() ? true : false} variant="outline-warning">
-              Editar Produto
-            </Button>
-          </Link>
-          <Button disabled={disableButton() ? true : false} onClick={handleDelete} variant="outline-danger">
-            Deletar Produto
-          </Button>
-        </Card.Body>
+      <Card id="cartao" style={{ width: '50%'}}>
+        <Card.Img id="image" variant="top" src={product ? product.image : ''} />
+              <Card.Body>
+                  <p className="type">Modelo: <Card.Text className="data">{product ? product.model : ''}</Card.Text></p>
+                  <p className="type">Marca: <Card.Text className="data">{product ? product.brand : ''}</Card.Text></p>
+                  <p className="type">Preço: <Card.Text className="data">R$ {product ? product.price : ''}</Card.Text></p>
+                  <p className="type">Cor: <Card.Text className="data">{product ? product.color : ''}</Card.Text></p>
+                  <p className="type">Ano: <Card.Text className="data">{product ? product.year : ''}</Card.Text></p>
+                  <p className="type">Kilometragem Atual: <Card.Text className="data">{product ? product.km : ''} km</Card.Text></p>
+                  <p className="type">Descrição: <Card.Text className="data">{product ? product.description : ''}</Card.Text></p>
+                  <p className="type">Condição: <Card.Text className="data">{product ? product.condition : ''}</Card.Text></p>
+                  <Link style={disableButton() ? {pointerEvents: 'none'} : null} to={`/dashboard/products/edit/${id}`}>
+                    <Button id="edit-but" disabled={disableButton() ? true : false} variant="outline-warning">
+                      Editar Produto
+                    </Button>
+                  </Link>
+                  <Button id="delet-but" disabled={disableButton() ? true : false} onClick={handleDelete} variant="outline-danger">
+                    Deletar Produto
+                  </Button>
+            </Card.Body>
       </Card>
     </div>
   )

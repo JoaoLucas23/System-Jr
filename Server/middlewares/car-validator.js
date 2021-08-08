@@ -42,7 +42,7 @@ function getValidator(method) {
         .withMessage('A km atual conter apenas números'),
       body('description')
         .optional()
-        .isAlphanumeric()
+        .isAlphanumeric('pt-BR', {ignore: ' '})
         .withMessage('As observações devem conter apenas letras e números'),
       body('condition')
         .exists()
@@ -84,7 +84,7 @@ function getValidator(method) {
         .withMessage('A km atual conter apenas números'),
       body('description')
         .optional()
-        .isAlphanumeric()
+        .isAlphanumeric('pt-BR', {ignore: ' '})
         .withMessage('As observações devem conter apenas letras e números'),
       body('condition')
         .optional()

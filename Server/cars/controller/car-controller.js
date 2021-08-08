@@ -44,7 +44,7 @@ router.get('/', jwtMiddleware,
     }
   });
 
-router.get('/:id', jwtMiddleware,
+router.get('/car/:id', jwtMiddleware,
   async (req, res, next) => {
     try {
       const carId = req.params.id;
@@ -56,7 +56,7 @@ router.get('/:id', jwtMiddleware,
     }
   });
 
-router.put('/:id', jwtMiddleware,
+router.put('/car/:id', jwtMiddleware,
   objectFilter(
     'body',
     ['model', 'brand', 'color', 'year', 'image', 'price',
@@ -73,7 +73,7 @@ router.put('/:id', jwtMiddleware,
     }
   });
 
-router.delete('/:id', jwtMiddleware,
+router.delete('/car/:id', jwtMiddleware,
   async (req, res, next) => {
     try {
       const carId = req.params.id;

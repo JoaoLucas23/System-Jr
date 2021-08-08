@@ -9,25 +9,25 @@ export default function CadastroProduto() {
     model: '',
     brand: '',
     color: '',
-    year: 0,
+    year: '',
     image: '',
-    price: 0,
-    km: 0,
+    price: '',
+    km: '',
     description: '',
     condition: ''
   })
   const inputChange = (event) => {
     if(event.target.name === "model")
-      setFormValues({...formValues, name: event.target.value})
+      setFormValues({...formValues, model: event.target.value})
 
     if(event.target.name === "brand")
-      setFormValues({...formValues, name: event.target.value})
+      setFormValues({...formValues, brand: event.target.value})
 
     if(event.target.name === "color")
-      setFormValues({...formValues, name: event.target.value})
+      setFormValues({...formValues, color: event.target.value})
 
     if(event.target.name === "year")
-      setFormValues({...formValues, name: event.target.value})
+      setFormValues({...formValues, year: event.target.value})
 
     if(event.target.name === "image")
       setFormValues({...formValues, image: event.target.value})
@@ -36,7 +36,7 @@ export default function CadastroProduto() {
       setFormValues({...formValues, price: event.target.value})
 
     if(event.target.name === "km")
-      setFormValues({...formValues, description: event.target.value})
+      setFormValues({...formValues, km: event.target.value})
     
     if(event.target.name === "description")
       setFormValues({...formValues, description: event.target.value})
@@ -48,40 +48,42 @@ export default function CadastroProduto() {
   const handleSubmit = (event) => {
     event.preventDefault();
     axios.post('/cars', formValues)
-      .then( (res) => console.log(res) )
-      .catch( (err) => console.log(err.response) )
+      .then( (res) => {console.log(res) 
+                        alert("Cadastro realizado com sucesso!")})
+      .catch( (err) => {console.log(err.response) 
+                        alert(err.message)})
   }
   return (
     <div className="CadastroProduto">
       <Form onSubmit={handleSubmit} className="formProduto">
-        <Form.Group controlId="formbasicName">
+        <Form.Group className="type-spc" controlId="formbasicModel">
           <Form.Control name="model" onChange={inputChange} type="text" placeholder="Modelo" />
         </Form.Group>
-        <Form.Group controlId="formbasicName">
+        <Form.Group className="type-spc" controlId="formbasicBrand">
           <Form.Control name="brand" onChange={inputChange} type="text" placeholder="Marca" />
         </Form.Group>
-        <Form.Group controlId="formbasicName">
+        <Form.Group className="type-spc" controlId="formbasicColor">
           <Form.Control name="color" onChange={inputChange} type="text" placeholder="Cor" />
         </Form.Group>
-        <Form.Group controlId="formbasicName">
+        <Form.Group className="type-spc" controlId="formbasic=Year">
           <Form.Control name="year" onChange={inputChange} type="text" placeholder="Ano" />
         </Form.Group>
-        <Form.Group controlId="formbasicImage">
+        <Form.Group className="type-spc" controlId="formbasicImage">
           <Form.Control name="image" onChange={inputChange} type="text" placeholder="Imagem" />
         </Form.Group>
-        <Form.Group controlId="formbasicPrice">
+        <Form.Group className="type-spc" controlId="formbasicPrice">
           <Form.Control name="price" onChange={inputChange} type="text" placeholder="Preço" />
         </Form.Group>
-        <Form.Group controlId="formbasicPrice">
+        <Form.Group className="type-spc" controlId="formbasicKM">
           <Form.Control name="km" onChange={inputChange} type="text" placeholder="Kilometragem" />
         </Form.Group>
-        <Form.Group controlId="formbasicDescription">
+        <Form.Group className="type-spc" controlId="formbasicDescription">
           <Form.Control name="description" onChange={inputChange} type="text" placeholder="Descrição" />
         </Form.Group>
-        <Form.Group controlId="formbasicCondition">
+        <Form.Group className="type-spc" controlId="formbasicCondition">
           <Form.Control name="condition" onChange={inputChange} type="text" placeholder="Condição" />
         </Form.Group>
-        <Button variant="success" type="submit">Concluir Cadastro</Button>
+        <Button id="cad-but" variant="success" type="submit">Concluir Cadastro</Button>
       </Form>
     </div>
   )

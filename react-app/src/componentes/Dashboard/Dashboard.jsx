@@ -8,6 +8,7 @@ import Product from './Products/Products';
 import ProductProfile from './ProductProfile/ProductProfile';
 import CadastroProduto from './CadastrarProduto/CadastroProduto';
 import AlterarProduto from './AlterarProduto/AlteraProduto';
+import Home from '../Home/Home'
 
 import './Dashboard.css';
 
@@ -38,7 +39,7 @@ export default function Dashboard() {
           <Button variant="outline-danger" onClick={handleLogout}>Logout</Button>
           <hr />
           <Nav.Link href="/dashboard/users">Usuários</Nav.Link>
-          <Nav.Link href="/dashboard/products">Produtos</Nav.Link>
+          <Nav.Link href="/dashboard/products">Carros</Nav.Link>
         </Nav>
         <Router>
           <Switch>
@@ -63,6 +64,6 @@ export default function Dashboard() {
     )
   else
     return (
-      <h1>Loading</h1>
+      <Home />
     )
 }
