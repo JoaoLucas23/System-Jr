@@ -1,0 +1,33 @@
+.UserCard img {
+  object-fit: cover;
+}
+
+.UserCard p.name {
+  font-size: 3vh;
+  margin-bottom: -1%;
+  color: black;
+}
+
+.UserCard p {
+  color: black;
+  font-size: 2.25vh;
+  text-align: center;
+  margin-bottom: 0%;
+}
+
+.UserCard:hover{
+transform: scale(1.05);
+transition: all 500ms;
+border-style: dashed;
+border-color: #000766;
+text-decoration: solid;
+}
+
+.UserCard{
+border-style: solid;
+border-width: 1px;
+border-color: #000766;
+background-color: white;
+height: 250px;
+width: auto;
+}

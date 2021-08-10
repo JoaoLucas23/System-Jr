@@ -1,0 +1,40 @@
+.botao-cadastro{
+  padding-bottom: 5%;
+  padding-left: 30%;
+  }
+
+  #botaoCadastro {
+    height: 25%;
+    margin-top: 2.5%;
+    text-align: center;
+    background-color: #000766;
+    border-color: #000766;
+    color: #f0efe4;
+    font-family: "Noto Sans";
+  }
+
+  #botaoCadastro:hover{
+    transform: scale(0.95);
+    transition: all 500ms;
+    background-color: #000435;
+    font-style: italic;
+  }
+
+  .itens {
+    display: inline-flex;
+    height: 100%;
+    flex-wrap: wrap;
+    margin-left: 30%;
+  }
+  
+  .hoverable {
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Rubik';
+    padding-bottom: 5%;
+    padding-right: 5%;
+  }
+
+  .User{
+    background-color: #f0efe4;
+  }

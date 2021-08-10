@@ -1,6 +1,51 @@
   
 .ProductProfile {
-    margin-left: 40%;
-    margin-top: 5%;
     text-align: center;
+    margin-left: 30%;
+    height: 100%;
   }
+
+  #cartao{
+    align-content: center;
+    margin-left: 22.5%;
+    height: 100%;
+  }
+
+  #image{
+    width: 70%;
+    align-self: center;
+  }
+
+  .type{
+    font-family: 'Noto Sans';
+    font-size: 13px;
+    text-align: left;
+    color: black;
+    margin-bottom: 0%;
+  }
+
+  .data{
+    font-size: 15px;
+    color: black;
+    text-align: left;
+    font-family: 'Rubik';
+    margin-top: 0%;
+  }
+
+    #edit-but{
+      margin-top: 10%;
+      margin-right: 10%;
+      background-color: white;
+      color: #ffd500;
+    }
+    #edit-but:hover{
+      background-color: #ffdd30;
+      color: #f0efe4;
+    }
+
+    #delet-but{
+      margin-top: 10%;
+    }
+    #delet-but:hover{
+      color: #f0efe4;
+    }

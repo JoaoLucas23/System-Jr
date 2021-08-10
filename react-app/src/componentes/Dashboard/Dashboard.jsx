@@ -5,9 +5,11 @@ import { useHistory } from 'react-router';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Product from './Products/Products';
+import Users from './Users/Users';
 import ProductProfile from './ProductProfile/ProductProfile';
 import CadastroProduto from './CadastrarProduto/CadastroProduto';
 import AlterarProduto from './AlterarProduto/AlteraProduto';
+import Home from '../Home/Home'
 
 import './Dashboard.css';
 
@@ -38,12 +40,12 @@ export default function Dashboard() {
           <Button variant="outline-danger" onClick={handleLogout}>Logout</Button>
           <hr />
           <Nav.Link href="/dashboard/users">Usuários</Nav.Link>
-          <Nav.Link href="/dashboard/products">Produtos</Nav.Link>
+          <Nav.Link href="/dashboard/products">Carros</Nav.Link>
         </Nav>
         <Router>
           <Switch>
             <Route path="/dashboard/users">
-
+             <Users/>
             </Route>
             <Route path="/dashboard/products/cadastro">
               <CadastroProduto />
@@ -63,6 +65,6 @@ export default function Dashboard() {
     )
   else
     return (
-      <h1>Loading</h1>
+      <Home />
     )
 }

@@ -4,7 +4,7 @@ import Logo from '../../../assests/logoreal.png';
 export default function Welcome() {
     return (
         <div className="Welcome">
-            <p className="name">Tropa Pistão</p>
+            <p id="name">Tropa Pistão</p>
             <img src={Logo}
                         alt="logo"
                     />

@@ -5,7 +5,7 @@
 }
 
 .Header{
-    background-color: #f6f6f6;
+    background-color: white;
     display: flex;
     flex: auto 1 1;
     flex-direction: row;
@@ -77,28 +77,33 @@ section.container{
 
 /* Add a black background color to the top navigation */
 .topnav {
-    background-color: #000766;
+    background-color: #ffdd30;
     overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
   }
   
   /* Style the links inside the navigation bar */
-  .topnav a {
+  .linknav {
     float: left;
-    color: #f0efe4;
+    color: black;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    font-size: 17px;
+    font-size: 25px;
+    font-weight: bold;
   }
   
   /* Change the color of links on hover */
-  .topnav a:hover {
+  .linknav:hover {
     background-color: #ddd;
     color: black;
   }
   
   /* Add a color to the active/current link */
-  .topnav a.active {
+  .linknav a.active {
     background-color: #ffdd30;
     color: black;
   }
