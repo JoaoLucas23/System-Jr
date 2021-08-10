@@ -1,13 +1,14 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useEffect , useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
-import { useParams } from 'react-router';
+import { useHistory, useParams} from 'react-router';
 
 import './AlteraProduto.css'
 
 export default function AlterarProduto() {
+  const history = useHistory();
 
-  const [product,setProduct] = useState(false);
+  const [product , setProduct] = useState(false);
 
   const [formValues, setFormValues] = useState({
     model: '',
@@ -20,6 +21,12 @@ export default function AlterarProduto() {
     description: '',
     condition: ''
   })
+
+  useEffect(()=>{
+    axios.get(`/cars/car/${id}`).then(res => setProduct(res.data))
+    .catch(err => console.log(err));
+}, []);
+
   const inputChange = (event) => {
     if(event.target.name === "model")
       setFormValues({...formValues, model: event.target.value})
@@ -51,22 +58,23 @@ export default function AlterarProduto() {
   let { id } = useParams();
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios.put(`/cars/car/${id}`, setProduct)
+    axios.put(`/cars/car/${id}`, formValues)
     .then( (res) => {console.log(res) 
-      alert("Alterações realizadas com sucesso!")})
+      alert("Alterações realizadas com sucesso!")
+      history.push(`/dashboard/products/${id}`)})
     .catch( (err) => {console.log(err.response) 
       alert(err.message)})
   }
 
   useEffect(()=> {
-    if(product) setFormValues({model:product.model, brand:product.brand,color:product.color,year:product.year,image:product.image,price:product.price,km:product.km,description:product.description,condition:product.condition});
-  }, [product])
+    if(product) setFormValues({model: product.model,brand:product.brand,color:product.color,year:product.year,image:product.image,price: product.price,km:product.km,description:product.description,condition:product.condition});
+  }, [product]);
 
   return (
     <div className="AlterarProduto">
       <Form onSubmit={handleSubmit} className="formProduto">
       <Form.Group className="type-spc" controlId="formbasicModel">
-          <Form.Control name="model" defaultValue={product.model} onChange={inputChange} type="text" placeholder="Modelo" />
+          <Form.Control defaultValue={product.model} name="model" onChange={inputChange} type="text" placeholder="Modelo" />
         </Form.Group>
         <Form.Group className="type-spc" controlId="formbasicBrand">
           <Form.Control name="brand" defaultValue={product.brand} onChange={inputChange} type="text" placeholder="Marca" />
@@ -90,9 +98,9 @@ export default function AlterarProduto() {
           <Form.Control name="description" defaultValue={product.description} onChange={inputChange} type="text" placeholder="Descrição" />
         </Form.Group>
         <Form.Group className="type-spc" controlId="formbasicCondition">
-          <Form.Control name="condition" defaultValue={product.condition} onChange={inputChange} type="text" placeholder="Condição" />
+          <Form.Control name="condition"  defaultValue={product.condition} onChange={inputChange} type="text" placeholder="novo / usado" />
         </Form.Group>
-        <Button variant="warning" type="submit">Concluir Edição</Button>
+          <Button variant="warning" type="submit">Concluir Edição</Button>   
       </Form>
     </div>
   )
