@@ -10,7 +10,7 @@ export default function User() {
   const match = useRouteMatch()
   const [user, setUser] = useState();
   useEffect(() =>
-    axios.get('/cars')
+    axios.get('/users')
       .then( (res) => setUser(res.data) )
       .catch( (err) => console.log(err.response) ),
   []);

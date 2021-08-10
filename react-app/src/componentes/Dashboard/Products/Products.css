@@ -22,17 +22,15 @@
 
   .itens {
     display: inline-flex;
-    padding-left: 30%;
     height: 100%;
-    margin: auto;
     flex-wrap: wrap;
+    margin-left: -5%;
   }
   
   .hoverable {
     text-align: center;
     text-decoration: none;
     font-family: 'Rubik';
-    padding-right: 5%;
     padding-bottom: 5%;
   }
 
