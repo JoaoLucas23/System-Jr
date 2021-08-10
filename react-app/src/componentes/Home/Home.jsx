@@ -8,11 +8,11 @@ export default function Home() {
         <div className="Home">
 
             <div class="topnav">
-            <a class="active" href="#home">Home</a>
-            <a href="#news">News</a>
-            <a href="#contact">Contact</a>
-            <a href="#about">About</a>
+            <Link to="/" className="linknav">Home</Link>
+            <Link to="/cadastro" className="linknav">Cadastro</Link>
+            <Link to="/login" className="linknav">Login</Link>
             </div>            
+            
             <div className="Header">
                 <div className="flex-title">
                     <img src={logo}
