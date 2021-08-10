@@ -1,7 +1,6 @@
   .botao-cadastro{
-  width: 100%;
-  margin-bottom: 5%;
-  padding-left: 27.5%;
+  padding-bottom: 5%;
+  padding-left: 30%;
   }
 
   #botaoCadastro {
@@ -23,12 +22,20 @@
 
   .itens {
     display: inline-flex;
-    padding-left: 25%;
+    padding-left: 30%;
+    height: 100%;
+    margin: auto;
+    flex-wrap: wrap;
   }
   
   .hoverable {
     text-align: center;
     text-decoration: none;
-    padding-left: 10%;
     font-family: 'Rubik';
+    padding-right: 5%;
+    padding-bottom: 5%;
+  }
+
+  .Product{
+    background-color: #f0efe4;
   }
