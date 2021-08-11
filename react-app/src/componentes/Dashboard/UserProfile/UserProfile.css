@@ -1,17 +1,20 @@
- .ProductProfile {
+  
+.UserProfile {
     text-align: center;
     margin-left: 30%;
+    height: 100%;
   }
 
   #cartao{
     align-content: center;
     margin-left: 22.5%;
+    height: 100%;
   }
 
   #image{
     max-height: 210px;
-    align-self: center;
     width: auto;
+    align-self: center;
   }
 
   .type{

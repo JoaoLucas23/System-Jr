@@ -8,7 +8,9 @@ export default function Home() {
         <div className="Home">
 
             <div class="topnav">
-            <Link to="/" className="linknav">Home</Link>
+            <Link to="/Home" className="linknav">Home</Link>
+            <Link to="/login" className="linknav">Carros</Link>
+            <Link to="/login" className="linknav">Usuários</Link>
             <Link to="/cadastro" className="linknav">Cadastro</Link>
             <Link to="/login" className="linknav">Login</Link>
             </div>            
@@ -42,11 +44,6 @@ export default function Home() {
         </div>
         <div className="Conteudo">
             <figure>
-                <img id="LogoV"
-                    src={logo}
-                    alt="variante logo"
-                    height='200px'
-                />
                 <figcaption>O maior, melhor e mais original site de compras e vendas de carros.</figcaption>
             </figure>
         </div>

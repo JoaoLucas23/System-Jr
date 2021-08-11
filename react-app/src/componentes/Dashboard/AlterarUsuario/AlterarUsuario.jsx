@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { useHistory, useParams} from 'react-router';
 
-import './AlteraProduto.css'
+import './AlterarUsuario.css'
 
 export default function AlterarProduto() {
   const history = useHistory();
@@ -21,7 +21,7 @@ export default function AlterarProduto() {
   useEffect(()=>{
       axios.get(`/users/user/${id}`).then(res => setUser(res.data))
       .catch(err => console.log(err));
-  }, []);
+  }, [id]);
 
   const inputChange = (event) => {
     if(event.target.name === "name")

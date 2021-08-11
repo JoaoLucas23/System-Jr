@@ -10,6 +10,10 @@ import ProductProfile from './ProductProfile/ProductProfile';
 import CadastroProduto from './CadastrarProduto/CadastroProduto';
 import AlterarProduto from './AlterarProduto/AlteraProduto';
 import Home from '../Home/Home'
+import AlterarUser from './AlterarUsuario/AlterarUsuario';
+import CadastroUser from '../Cadastro/Cadastro';
+import UserProfile from './UserProfile/UserProfile'
+
 
 import './Dashboard.css';
 
@@ -44,6 +48,15 @@ export default function Dashboard() {
         </Nav>
         <Router>
           <Switch>
+          <Route path="/dashboard/users/cadastro">
+              <CadastroUser />
+            </Route>
+            <Route path="/dashboard/users/edit/:id">
+              <AlterarUser user={user} />
+            </Route>
+            <Route path="/dashboard/users/:id">
+              <UserProfile user={user} />
+            </Route>
             <Route path="/dashboard/users">
              <Users/>
             </Route>

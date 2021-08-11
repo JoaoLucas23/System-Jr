@@ -7,7 +7,7 @@ import './AlteraProduto.css'
 
 export default function AlterarProduto() {
   const history = useHistory();
-
+  const { id } = useParams();
   const [product , setProduct] = useState(false);
 
   const [formValues, setFormValues] = useState({
@@ -25,7 +25,7 @@ export default function AlterarProduto() {
   useEffect(()=>{
     axios.get(`/cars/car/${id}`).then(res => setProduct(res.data))
     .catch(err => console.log(err));
-}, []);
+}, [id]);
 
   const inputChange = (event) => {
     if(event.target.name === "model")
@@ -55,7 +55,6 @@ export default function AlterarProduto() {
     if(event.target.name === "condition")
       setFormValues({...formValues, condition: event.target.value})
   }
-  let { id } = useParams();
   const handleSubmit = (event) => {
     event.preventDefault();
     axios.put(`/cars/car/${id}`, formValues)
