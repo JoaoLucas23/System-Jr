@@ -1,2 +1,4 @@
 *.md
 /node_modules
+react-app/node_modules/.cache/.eslintcache
+Server/.env
