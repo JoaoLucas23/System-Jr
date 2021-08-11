@@ -1,5 +1,6 @@
 .UserCard img {
   object-fit: cover;
+  height: auto;
 }
 
 .UserCard p.name {

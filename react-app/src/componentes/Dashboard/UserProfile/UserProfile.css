@@ -12,7 +12,8 @@
   }
 
   #image{
-    width: 70%;
+    max-height: 210px;
+    width: auto;
     align-self: center;
   }
 
