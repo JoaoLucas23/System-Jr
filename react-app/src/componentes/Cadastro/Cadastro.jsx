@@ -1,11 +1,11 @@
 import axios from 'axios';
 import { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
-import './Cadastro.css'
+import './Cadastro.css';
 
 export default function CadastroUsuario() {
-
   const [formValues, setFormValues] = useState({
     name: '',
     email: '',
@@ -29,8 +29,6 @@ export default function CadastroUsuario() {
 
     if(event.target.name === "image")
       setFormValues({...formValues, image: event.target.value})
-
-    
   }
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -58,7 +56,9 @@ export default function CadastroUsuario() {
         <Form.Group className="type-spc" controlId="formbasicImage">
           <Form.Control name="image" onChange={inputChange} type="text" placeholder="Image" />
         </Form.Group>
+        <Link  to={`/Login/`}>
         <Button id="cad-but" variant="success" type="submit">Concluir Cadastro</Button>
+                  </Link>
       </Form>
     </div>
   )
