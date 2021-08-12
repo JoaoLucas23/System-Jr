@@ -57,8 +57,8 @@ export default function CadastroUsuario() {
           <Form.Control name="image" onChange={inputChange} type="text" placeholder="Image" />
         </Form.Group>
         <Link  to={`/Login/`}>
-        <Button id="cad-but" variant="success" type="submit">Concluir Cadastro</Button>
-                  </Link>
+          <Button id="cad-but" variant="success" type="submit">Concluir Cadastro</Button>
+        </Link>
       </Form>
     </div>
   )
