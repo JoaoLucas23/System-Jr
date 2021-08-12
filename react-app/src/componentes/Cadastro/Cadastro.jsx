@@ -56,7 +56,7 @@ export default function CadastroUsuario() {
         <Form.Group className="type-spc" controlId="formbasicImage">
           <Form.Control name="image" onChange={inputChange} type="text" placeholder="Image" />
         </Form.Group>
-        <Link  to={`/Login/`}>
+        <Link  to={`/login`}>
         <Button id="cad-but" variant="success" type="submit">Concluir Cadastro</Button>
                   </Link>
       </Form>
