@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 
-import './Cadastro.css'
+import './Cadastro.css';
 
 export default function CadastroUsuario() {
 
@@ -29,8 +29,6 @@ export default function CadastroUsuario() {
 
     if(event.target.name === "image")
       setFormValues({...formValues, image: event.target.value})
-
-    
   }
   const handleSubmit = (event) => {
     event.preventDefault();

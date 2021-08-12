@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 
-import './CadastroProduto.css'
+import './CadastroProduto.css';
 
 export default function CadastroProduto() {
   const [formValues, setFormValues] = useState({
