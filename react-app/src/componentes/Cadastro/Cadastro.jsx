@@ -93,7 +93,7 @@ export default function Cadastro() {
         </Col>
 
         
-        <Button className= "justify-content-center mt-5" >Cadastrar</Button>
+        <Button className= "justify-content-center mt-5" type= "submit" >Cadastrar</Button>
 
       </Form>
     </CardBody>

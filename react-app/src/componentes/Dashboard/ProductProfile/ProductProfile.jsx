@@ -16,6 +16,7 @@ export default function ProductProfile(props) {
       .then( (res) => setProduct(res.data) )
       .catch( (err) => console.log(err.response) ),
   [id])
+
   const handleDelete = (event) => {
     event.preventDefault();
     axios.delete(`/cars/car/${id}`)
@@ -23,11 +24,13 @@ export default function ProductProfile(props) {
       .catch( (err) => console.log(err.response) );
   }
 
-  useEffect (()=>
-    axios.get(`users/user/${product.UserId}`)
+  useEffect (()=>{
+    if(product){
+      axios.get(`/users/user/${product.UserId}`)
       .then((res)=> setUser(res.data))
-      .catch((err)=>console.log(err.response)),
-  );
+      .catch((err)=> console.log(err.response))
+    };
+  }, [product]);
 
   return (
     <div className="ProductProfile">
