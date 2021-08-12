@@ -7,6 +7,7 @@ import './ProductProfile.css';
 export default function ProductProfile(props) {
   const history = useHistory();
   const [product, setProduct] = useState();
+  const [user, setUser] = useState();
   let { id } = useParams();
 
   const disableButton = () => ( (props.user.role !== 'admin') && (props.user.id !== (product ? product.UserId : null)) ) ? true : false;
@@ -15,12 +16,22 @@ export default function ProductProfile(props) {
       .then( (res) => setProduct(res.data) )
       .catch( (err) => console.log(err.response) ),
   [id])
+
   const handleDelete = (event) => {
     event.preventDefault();
     axios.delete(`/cars/car/${id}`)
       .then( (res) => history.push('/dashboard/products') )
       .catch( (err) => console.log(err.response) );
   }
+
+  useEffect (()=>{
+    if(product){
+      axios.get(`/users/user/${product.UserId}`)
+      .then((res)=> setUser(res.data))
+      .catch((err)=> console.log(err.response))
+    };
+  }, [product]);
+
   return (
     <div className="ProductProfile">
       <Card id="cartao" style={{ width: '50%'}}>
@@ -34,6 +45,9 @@ export default function ProductProfile(props) {
                   <p className="type">Kilometragem Atual: <Card.Text className="data">{product ? product.km : ''} km</Card.Text></p>
                   <p className="type">Descrição: <Card.Text className="data">{product ? product.description : ''}</Card.Text></p>
                   <p className="type">Condição: <Card.Text className="data">{product ? product.condition : ''}</Card.Text></p>
+                  <Link to={`/dashboard/users/user-profile/${user.id}`}>
+                    <p className="type">Dono: <Card.Text className="data">{user ? user.name : ''}</Card.Text></p>
+                  </Link>
                   <Link style={disableButton() ? {pointerEvents: 'none'} : null} to={`/dashboard/products/edit/${id}`}>
                     <Button id="edit-but" disabled={disableButton() ? true : false} variant="outline-warning">
                       Editar Produto

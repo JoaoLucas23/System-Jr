@@ -54,13 +54,13 @@ export default function AlterarProduto() {
     <div className="AlterarProduto">
       <Form onSubmit={handleSubmit} className="formProduto">
       <Form.Group className="type-spc" controlId="formbasicModel">
-          <Form.Control name="name" defaultValue={user.name} onChange={inputChange} type="text" placeholder="Modelo" />
+          <Form.Control name="name" defaultValue={user.name} onChange={inputChange} type="text" placeholder="Nome" />
         </Form.Group>
         <Form.Group className="type-spc" controlId="formbasicBrand">
-          <Form.Control name="email" defaultValue={user.email} onChange={inputChange} type="text" placeholder="Marca" />
+          <Form.Control name="email" defaultValue={user.email} onChange={inputChange} type="text" placeholder="Email" />
         </Form.Group>
         <Form.Group className="type-spc" controlId="formbasicColor">
-          <Form.Control name="phone" defaultValue={user.phone} onChange={inputChange} type="text" placeholder="Cor" />
+          <Form.Control name="phone" defaultValue={user.phone} onChange={inputChange} type="text" placeholder="Telefone" />
         </Form.Group>
         <Form.Group className="type-spc" controlId="formbasicImage">
           <Form.Control name="image" defaultValue={user.image} onChange={inputChange} type="text" placeholder="Imagem" />
