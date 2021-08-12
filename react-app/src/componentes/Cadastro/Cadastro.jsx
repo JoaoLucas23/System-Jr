@@ -50,7 +50,7 @@ export default function CadastroUsuario() {
           <Form.Control name="email" onChange={inputChange} type="text" placeholder="email" />
         </Form.Group>
         <Form.Group className="type-spc" controlId="formbasicPassword">
-          <Form.Control name="password" onChange={inputChange} type="text" placeholder="password" />
+          <Form.Control name="password" onChange={inputChange} type="password" placeholder="password" />
         </Form.Group>
         <Form.Group className="type-spc" controlId="formbasicPhone">
           <Form.Control name="phone" onChange={inputChange} type="text" placeholder="phone" />

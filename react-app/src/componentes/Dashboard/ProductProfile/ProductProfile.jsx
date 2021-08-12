@@ -45,7 +45,9 @@ export default function ProductProfile(props) {
                   <p className="type">Kilometragem Atual: <Card.Text className="data">{product ? product.km : ''} km</Card.Text></p>
                   <p className="type">Descrição: <Card.Text className="data">{product ? product.description : ''}</Card.Text></p>
                   <p className="type">Condição: <Card.Text className="data">{product ? product.condition : ''}</Card.Text></p>
-                  <p className="type">Dono: <Card.Text className="data">{user ? user.name : ''}</Card.Text></p>
+                  <Link to={`/dashboard/users/user-profile/${user.id}`}>
+                    <p className="type">Dono: <Card.Text className="data">{user ? user.name : ''}</Card.Text></p>
+                  </Link>
                   <Link style={disableButton() ? {pointerEvents: 'none'} : null} to={`/dashboard/products/edit/${id}`}>
                     <Button id="edit-but" disabled={disableButton() ? true : false} variant="outline-warning">
                       Editar Produto
