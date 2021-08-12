@@ -39,7 +39,7 @@ export default function CadastroUsuario() {
                         alert(err.message)})
   }
   return (
-    <div className="CadastroProduto">
+    <div className="CadastroUsuario">
       <Form onSubmit={handleSubmit} className="formUsuario">
         <Form.Group className="type-spc" controlId="formbasicName">
           <Form.Control name=  "name" onChange={inputChange} type="text" placeholder= "name" />
