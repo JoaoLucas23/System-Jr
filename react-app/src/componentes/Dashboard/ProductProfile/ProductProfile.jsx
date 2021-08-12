@@ -23,11 +23,11 @@ export default function ProductProfile(props) {
       .catch( (err) => console.log(err.response) );
   }
 
-  const getOwner = (event) =>{
+  useEffect (()=>
     axios.get(`users/user/${product.UserId}`)
       .then((res)=> setUser(res.data))
-      .catch((err)=>console.log(err.response));
-}
+      .catch((err)=>console.log(err.response)),
+  );
 
   return (
     <div className="ProductProfile">
@@ -42,7 +42,7 @@ export default function ProductProfile(props) {
                   <p className="type">Kilometragem Atual: <Card.Text className="data">{product ? product.km : ''} km</Card.Text></p>
                   <p className="type">Descrição: <Card.Text className="data">{product ? product.description : ''}</Card.Text></p>
                   <p className="type">Condição: <Card.Text className="data">{product ? product.condition : ''}</Card.Text></p>
-                  <p className="type">Dono: <Card.Text className="data">{product ? user.name : ''}</Card.Text></p>
+                  <p className="type">Dono: <Card.Text className="data">{user ? user.name : ''}</Card.Text></p>
                   <Link style={disableButton() ? {pointerEvents: 'none'} : null} to={`/dashboard/products/edit/${id}`}>
                     <Button id="edit-but" disabled={disableButton() ? true : false} variant="outline-warning">
                       Editar Produto
