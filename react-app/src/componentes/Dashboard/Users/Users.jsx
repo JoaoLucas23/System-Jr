@@ -23,13 +23,6 @@ export default function User() {
   if(user) loadedUsers = user.map(usersToCards);
   return (
     <div className="User">
-      <div className="botao-cadastro">
-        <Link to={`${useRouteMatch().path}/cadastro`}>
-          <Button id="botaoCadastro">
-            Cadastrar Usuario
-          </Button>
-        </Link>
-      </div>
       <div className="itens">
         {loadedUsers}
       </div>

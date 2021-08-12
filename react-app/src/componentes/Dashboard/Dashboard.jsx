@@ -48,9 +48,6 @@ export default function Dashboard() {
         </Nav>
         <Router>
           <Switch>
-          <Route path="/dashboard/users/cadastro">
-              <CadastroUser />
-            </Route>
             <Route path="/dashboard/users/edit/:id">
               <AlterarUser user={user} />
             </Route>

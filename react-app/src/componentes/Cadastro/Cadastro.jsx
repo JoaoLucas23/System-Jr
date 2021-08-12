@@ -11,7 +11,7 @@ export default function CadastroUsuario() {
     email: '',
     password: '',
     phone: '',
-    image: '',
+    image: ''
   })
 
   const inputChange = (event) => {

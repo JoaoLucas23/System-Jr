@@ -5,6 +5,7 @@ import { Form, Button } from 'react-bootstrap';
 import './CadastroProduto.css'
 
 export default function CadastroProduto() {
+  const history = useHistory();
   const [formValues, setFormValues] = useState({
     model: '',
     brand: '',
@@ -48,8 +49,7 @@ export default function CadastroProduto() {
   const handleSubmit = (event) => {
     event.preventDefault();
     axios.post('/cars', formValues)
-      .then( (res) => {console.log(res) 
-                        alert("Cadastro realizado com sucesso!")})
+      .then( (res) => history.push('/Login'))
       .catch( (err) => {console.log(err.response) 
                         alert(err.message)})
   }
