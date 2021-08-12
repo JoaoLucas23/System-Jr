@@ -2,12 +2,14 @@ import React from 'react';
 import { Col, Row, Button, Form, FormGroup, Label, Input, Card, CardBody, CardTitle} from 'reactstrap';
 import './Cadastro.css'
 import { useState } from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import axios from 'axios';
 
 
 
 export default function Cadastro() {
+  const history = useHistory();
+
   const [formValues, setFormValues] = useState({
     name: '',
     email: '',
@@ -34,8 +36,7 @@ export default function Cadastro() {
     const handleSubmit = (event) => {
     event.preventDefault();
     axios.post('/users', formValues)
-      .then( (res) => {console.log(res) 
-                        alert("Cadastro realizado com sucesso!")})
+      .then( (res) => history.pushState('/dashboard/users'))
       .catch( (err) => {console.log(err.response) 
                         alert(err.message)})
   }
