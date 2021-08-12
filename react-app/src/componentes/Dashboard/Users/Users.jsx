@@ -2,7 +2,6 @@ import axios from 'axios';
 import { useState, useEffect } from 'react'
 import { Link, useRouteMatch } from 'react-router-dom';
 
-import { Button } from 'react-bootstrap';
 import UserCard from '../UserCard/UserCard'
 import './Users.css';
 

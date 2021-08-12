@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import './Cadastro.css';
 
@@ -13,6 +13,8 @@ export default function CadastroUsuario() {
     phone: '',
     image: ''
   })
+
+  const history = useHistory();
 
   const inputChange = (event) => {
     if(event.target.name === "name")
@@ -33,7 +35,7 @@ export default function CadastroUsuario() {
   const handleSubmit = (event) => {
     event.preventDefault();
     axios.post('/users', formValues)
-      .then( (res) => {console.log(res) 
+      .then( (res) => {history.push('/login') 
         alert("Cadastro realizado com sucesso!")})
       .catch( (err) => {console.log(err.response) 
                         alert(err.message)})
@@ -56,9 +58,7 @@ export default function CadastroUsuario() {
         <Form.Group className="type-spc" controlId="formbasicImage">
           <Form.Control name="image" onChange={inputChange} type="text" placeholder="Image" />
         </Form.Group>
-        <Link  to={`/login`}>
           <Button id="cad-but" variant="success" type="submit">Concluir Cadastro</Button>
-        </Link>
       </Form>
     </div>
   )

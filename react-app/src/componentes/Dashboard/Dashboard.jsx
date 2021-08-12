@@ -11,7 +11,6 @@ import CadastroProduto from './CadastrarProduto/CadastroProduto';
 import AlterarProduto from './AlterarProduto/AlteraProduto';
 import Home from '../Home/Home'
 import AlterarUser from './AlterarUsuario/AlterarUsuario';
-import CadastroUser from '../Cadastro/Cadastro';
 import UserProfile from './UserProfile/UserProfile'
 
 
