@@ -5,6 +5,7 @@ import { Form, Button } from 'react-bootstrap';
 import './Cadastro.css'
 
 export default function CadastroUsuario() {
+
   const [formValues, setFormValues] = useState({
     name: '',
     email: '',
@@ -12,6 +13,7 @@ export default function CadastroUsuario() {
     phone: '',
     image: '',
   })
+
   const inputChange = (event) => {
     if(event.target.name === "name")
       setFormValues({...formValues,  name: event.target.value})
@@ -20,10 +22,10 @@ export default function CadastroUsuario() {
       setFormValues({...formValues, email: event.target.value})
 
     if(event.target.name === "password")
-      setFormValues({...formValues, color: event.target.value})
+      setFormValues({...formValues, password: event.target.value})
 
     if(event.target.name === "phone")
-      setFormValues({...formValues, year: event.target.value})
+      setFormValues({...formValues, phone: event.target.value})
 
     if(event.target.name === "image")
       setFormValues({...formValues, image: event.target.value})
@@ -32,9 +34,9 @@ export default function CadastroUsuario() {
   }
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios.post('/cars', formValues)
+    axios.post('/users', formValues)
       .then( (res) => {console.log(res) 
-                        alert("Cadastro realizado com sucesso!")})
+        alert("Cadastro realizado com sucesso!")})
       .catch( (err) => {console.log(err.response) 
                         alert(err.message)})
   }
