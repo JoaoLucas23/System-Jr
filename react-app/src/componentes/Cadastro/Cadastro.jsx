@@ -1,7 +1,9 @@
 import React from 'react';
 import { Col, Row, Button, Form, FormGroup, Label, Input, Card, CardBody, CardTitle} from 'reactstrap';
 import './Cadastro.css'
+import { useState } from 'react';
 import {Link} from 'react-router-dom';
+import axios from 'axios';
 
 
 
@@ -28,10 +30,10 @@ export default function Cadastro() {
 
     if(event.target.name === "image")
       setFormValues({...formValues, image: event.target.value})
-
+    }
     const handleSubmit = (event) => {
     event.preventDefault();
-    axios.post('/cars', formValues)
+    axios.post('/users', formValues)
       .then( (res) => {console.log(res) 
                         alert("Cadastro realizado com sucesso!")})
       .catch( (err) => {console.log(err.response) 
@@ -103,5 +105,4 @@ export default function Cadastro() {
 
 
 );
-  
-  
+}
