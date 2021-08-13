@@ -1,11 +1,12 @@
 import axios from 'axios';
 import { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom';
 
 import './CadastroProduto.css';
 
 export default function CadastroProduto() {
-  
+  const history = useHistory();
   const [formValues, setFormValues] = useState({
     model: '',
     brand: '',
@@ -54,6 +55,11 @@ export default function CadastroProduto() {
       .catch( (err) => {console.log(err.response) 
                         alert(err.message)})
   }
+
+  const handleClick = (event) => {
+    history.push(`/dashboard/products`);
+  }
+
   return (
     <div className="CadastroProduto">
       <Form onSubmit={handleSubmit} className="formProduto">
@@ -84,7 +90,7 @@ export default function CadastroProduto() {
         <Form.Group className="type-spc" controlId="formbasicCondition">
           <Form.Control name="condition" onChange={inputChange} type="text" placeholder="Condição" />
         </Form.Group>
-        <Button id="cad-but" variant="success" type="submit">Concluir Cadastro</Button>
+        <Button onClick={handleClick} id="cad-but" variant="success" type="submit">Concluir Cadastro</Button>
       </Form>
     </div>
   )

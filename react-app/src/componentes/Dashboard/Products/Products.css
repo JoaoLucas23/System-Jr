@@ -1,6 +1,6 @@
   .botao-cadastro{
-  padding-bottom: 5%;
-  padding-left: 30%;
+    padding-bottom: 3%;
+    padding-left: 5%;
   }
 
   #botaoCadastro {
@@ -24,7 +24,6 @@
     display: inline-flex;
     height: 100%;
     flex-wrap: wrap;
-    margin-left: -5%;
   }
   
   .hoverable {

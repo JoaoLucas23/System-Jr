@@ -22,7 +22,7 @@ export default function User() {
   if(user) loadedUsers = user.map(usersToCards);
   return (
     <div className="User">
-      <div className="itens">
+      <div className="user-itens">
         {loadedUsers}
       </div>
     </div> 

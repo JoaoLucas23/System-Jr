@@ -21,14 +21,20 @@ export default function UserProfile(props) {
       .catch( (err) => console.log(err.response) );
   }
 
+  const handleClick = (event) => {
+    if(user){
+    history.push(`/dashboard/users/user-profile/${user.id}`);
+    }
+  }
+
   const disableButton = () => ( (props.user.role !== 'admin') && (props.user.id !== (user ? user.id : null)) ) ? true : false;
   const disableDeleteButton = () => (props.user.role !== 'admin') ? true : false;
   return (
     <div className="UserProfile">
       <Card id="cartao" style={{ width: '50%'}}>
-        <Card.Img id="user-Image" variant="top" src={user ? user.image : ''} />
+        <Card.Img onClick={handleClick} id="user-Image" variant="top" src={user ? user.image : ''} />
               <Card.Body>
-                  <p className="user-Type">Nome: <Card.Text className="data">{user ? user.name : ''}</Card.Text></p>
+                  <p className="user-Type">Nome: <Card.Text onClick={handleClick} id="profile-name" className="data">{user ? user.name : ''}</Card.Text></p>
                   <p className="user-Type">Email: <Card.Text className="data">{user ? user.email : ''}</Card.Text></p>
                   <p className="user-Type">Telefone: <Card.Text className="data">{user ? user.phone : ''}</Card.Text></p>
                   <p className="user-Type">Papel: <Card.Text className="data">{user ? user.role : ''}</Card.Text></p>

@@ -34,7 +34,7 @@ export default function ProductProfile(props) {
 
   const handleClick = (event) => {
     if(product){
-    history.push(`/dashboard/users/${product.UserId}`);
+    history.push(`/dashboard/users/user-profile/${product.UserId}`);
     }
   }
 

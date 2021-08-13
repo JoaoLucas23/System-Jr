@@ -1,30 +1,10 @@
-.botao-cadastro{
-  padding-bottom: 5%;
-  padding-left: 30%;
-  }
 
-  #botaoCadastro {
-    height: 25%;
-    margin-top: 2.5%;
-    text-align: center;
-    background-color: #000766;
-    border-color: #000766;
-    color: #f0efe4;
-    font-family: "Noto Sans";
-  }
-
-  #botaoCadastro:hover{
-    transform: scale(0.95);
-    transition: all 500ms;
-    background-color: #000435;
-    font-style: italic;
-  }
-
-  .itens {
+  .user-itens {
     display: inline-flex;
     height: 100%;
     flex-wrap: wrap;
-    margin-left: 30%;
+    padding-left: 5%;
+    padding-top: 5%;
   }
   
   .hoverable {

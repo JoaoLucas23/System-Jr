@@ -9,7 +9,6 @@ import Users from './Users/Users';
 import ProductProfile from './ProductProfile/ProductProfile';
 import CadastroProduto from './CadastrarProduto/CadastroProduto';
 import AlterarProduto from './AlterarProduto/AlteraProduto';
-import Home from '../Home/Home'
 import AlterarUser from './AlterarUsuario/AlterarUsuario';
 import UserProfile from './UserProfile/UserProfile';
 import LastCars from './LastCars/LastCars';
@@ -39,23 +38,28 @@ export default function Dashboard() {
   if(user)
     return (
       <div className="Dashboard">
-            <div class="topnav">
-            <Link to="/Dashboard/LastCars" className="linknav">Home</Link>
-            <Link to="/dashboard/products" className="linknav">Carros</Link>
-            <Link to="/Dashboard/Users" className="linknav">Usuários</Link>
-            <Link to="/Dashboard/home" className="linknav">Cadastro</Link>
-            <Link to="/Dashboard/home" className="linknav">Login</Link>
-            </div> 
+            <Nav class="top-nav">
+            <Nav.Link href="/home" id="link-nav">Home</Nav.Link>
+            <Nav.Link href="/dashboard/home" id="link-nav">Dashboard</Nav.Link>
+            <Nav.Link href="/dashboard/products" id="link-nav">Carros</Nav.Link>
+            <Nav.Link href="/dashboard/users" id="link-nav">Usuários</Nav.Link>
+            <Nav.Link href="/cadastro" id="link-nav">Cadastro</Nav.Link>
+            <Nav.Link href="/login" id="link-nav">Login</Nav.Link>
+            </Nav> 
+        <section className="Cont">
         <Nav className="flex-column">
           <hr />
+          <Nav.Link href={`/dashboard/users/user-profile/${user.id}`} >
           <img width="130" height="130" src={user.image} alt="User" onClick={handleClick} />
-          <Nav.Item onClick={handleClick}>{user.name}</Nav.Item>
-          <Nav.Item>{user.email}</Nav.Item>
+          <Nav.Item id="to-user" onClick={handleClick}>{user.name}</Nav.Item>
+          </Nav.Link>
+          <Nav.Item id="email">{user.email}</Nav.Item>
           <Button variant="outline-danger" onClick={handleLogout}>Logout</Button>
           <hr />
-          <Nav.Link href="/dashboard/users">Usuários</Nav.Link>
-          <Nav.Link href="/dashboard/products">Carros</Nav.Link>
+          <Nav.Link id="side-link" href="/dashboard/users">Usuários</Nav.Link>
+          <Nav.Link id="side-link" href="/dashboard/products">Carros</Nav.Link>
         </Nav>
+        <div className="right-Itens">
         <Router>
           <Switch>
           <Route path="/dashboard/users/user-profile/:id">
@@ -87,10 +91,14 @@ export default function Dashboard() {
             </Route>
           </Switch>
         </Router>
+        </div>
+        </section>
       </div>
     )
   else
     return (
-      <Home />
+      <div className="carregando">
+        Carregando...
+      </div>
     )
 }

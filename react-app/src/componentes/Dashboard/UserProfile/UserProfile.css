@@ -1,7 +1,6 @@
   
 .UserProfile {
     text-align: center;
-    margin-left: 30%;
     height: 100%;
   }
 
@@ -15,6 +14,11 @@
     max-height: 210px;
     width: auto;
     align-self: center;
+    cursor: pointer;
+  }
+
+  #profile-name{
+    cursor: pointer;
   }
 
   .user-Type{

@@ -1,7 +1,7 @@
 .Dashboard{
-    height: 100%;
     background-color: #f0efe4;
     font-family: 'Noto Sans';
+    height: 100%;
 }
 
 .flex-column.nav *{
@@ -10,6 +10,17 @@
 
 .last-cars{
     margin-left: 30%;
+}
+
+.Cont{
+    height: 100%;
+    display: flex;
+    background-color: #f0efe4;
+}
+
+.right-Itens{
+    width: 80%;
+    margin-left: 10%;
 }
 
 #link{
@@ -22,22 +33,10 @@
 }
 
 .flex-column.nav{
-    
     margin: 0;
-    display: inline-flex;
-    width: 25%;
+    width: 20%;
     height: 100%;
-    background-image: linear-gradient(#000766 5%, #010112);
-}
-
-#nome{
-    color: white;
-    font-size: 5vh;
-}
-#email{
-    color: white;
-    font-size: 2.5vh;
-    margin-bottom: 7.5%;
+    background-image: linear-gradient(#ffdd30 , white);
 }
 
 #logout-button{
@@ -48,20 +47,31 @@
     width: 75%;
 }
 
+#email{
+    color: black;
+    padding-bottom: 5%;
+}
+
+#to-user{
+    padding-top: 5%;
+    color: black;
+    text-align: center;
+}
+
 /* Add a background color to the top navigation */
-.topnav {
-    background-color: #ffdd30;
+.top-nav {
+    background-color: #000766;
     overflow: hidden;
     display: flex;
     flex-direction: row;
     justify-content: left;
     align-items: center;
   }
-  
+
   /* Style the links inside the navigation bar */
-  .linknav {
+  #link-nav {
     float: left;
-    color: black;
+    color: #f0efe4;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -70,13 +80,20 @@
   }
   
   /* Change the color of links on hover */
-  .linknav:hover {
+  #link-nav:hover {
     background-color: #ddd;
-    color: black;
+    color: #000766;
   }
   
   /* Add a color to the active/current link */
   .linknav a.active {
     background-color: #ffdd30;
     color: black;
+  }
+
+  .carregando{
+      background-color: #f0efe4;
+      color: #000766;
+      font-size: 30px;
+      height: 100%;
   }

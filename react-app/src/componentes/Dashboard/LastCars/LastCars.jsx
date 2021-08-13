@@ -20,7 +20,7 @@ export default function Product() {
     </Link>
   if(product) loadedProducts = product.map(productsToCards);
   return (
-    <div className="Product">
+    <div className="Last-Cars">
         <div className="title">
             Últimos carros cadastrados:
         </div>
