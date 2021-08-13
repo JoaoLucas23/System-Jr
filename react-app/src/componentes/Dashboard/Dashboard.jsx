@@ -35,6 +35,13 @@ export default function Dashboard() {
   if(user)
     return (
       <div className="Dashboard">
+            <div class="topnav">
+            <Link to="/Dashboard/LastCars" className="linknav">Home</Link>
+            <Link to="/dashboard/products" className="linknav">Carros</Link>
+            <Link to="/Dashboard/Users" className="linknav">Usuários</Link>
+            <Link to="/Dashboard/home" className="linknav">Cadastro</Link>
+            <Link to="/Dashboard/home" className="linknav">Login</Link>
+            </div> 
         <Nav className="flex-column">
           <hr />
           <Link>
