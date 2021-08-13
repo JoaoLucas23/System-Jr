@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Button, Card } from 'react-bootstrap';
 import './UserProfile.css';
 
-export default function ProductProfile(props) {
+export default function UserProfile(props) {
   const history = useHistory();
   const [user, setUser] = useState();
   let { id } = useParams();
@@ -26,18 +26,18 @@ export default function ProductProfile(props) {
   return (
     <div className="UserProfile">
       <Card id="cartao" style={{ width: '50%'}}>
-        <Card.Img id="image" variant="top" src={user ? user.image : ''} />
+        <Card.Img id="user-Image" variant="top" src={user ? user.image : ''} />
               <Card.Body>
-                  <p className="type">Nome: <Card.Text className="data">{user ? user.name : ''}</Card.Text></p>
-                  <p className="type">Email: <Card.Text className="data">{user ? user.email : ''}</Card.Text></p>
-                  <p className="type">Telefone: <Card.Text className="data">{user ? user.phone : ''}</Card.Text></p>
-                  <p className="type">Papel: <Card.Text className="data">{user ? user.role : ''}</Card.Text></p>
+                  <p className="user-Type">Nome: <Card.Text className="data">{user ? user.name : ''}</Card.Text></p>
+                  <p className="user-Type">Email: <Card.Text className="data">{user ? user.email : ''}</Card.Text></p>
+                  <p className="user-Type">Telefone: <Card.Text className="data">{user ? user.phone : ''}</Card.Text></p>
+                  <p className="user-Type">Papel: <Card.Text className="data">{user ? user.role : ''}</Card.Text></p>
                   <Link style={disableButton() ? {pointerEvents: 'none'}:null } to={`/dashboard/users/edit/${id}`}>
-                    <Button id="edit-but" disabled={disableButton() ? true : false} variant="outline-warning">
+                    <Button id="user-edit-but" disabled={disableButton() ? true : false} variant="outline-warning">
                       Editar Usuário
                     </Button>
                   </Link>
-                  <Button id="delet-but" disabled={disableDeleteButton() ? true : false} onClick={handleDelete} variant="outline-danger">
+                  <Button id="user-delet-but" disabled={disableDeleteButton() ? true : false} onClick={handleDelete} variant="outline-danger">
                     Deletar Usuário
                   </Button>
             </Card.Body>

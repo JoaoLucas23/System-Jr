@@ -25,6 +25,15 @@ class CarService {
     return result;
   }
 
+  async getUserCars(id) {
+    const result = await Car.findAll(
+      {
+        where: {UserId: id},
+      },
+    );
+    return result;
+  }
+
   async getCarById(id) {
     const car = await Car.findByPk(id, {raw: true, attributes:
       {

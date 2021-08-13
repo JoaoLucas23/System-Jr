@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { Nav, Button } from 'react-bootstrap';
 import { useHistory } from 'react-router';
-import { Link, BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Product from './Products/Products';
 import Users from './Users/Users';
@@ -13,6 +13,7 @@ import Home from '../Home/Home'
 import AlterarUser from './AlterarUsuario/AlterarUsuario';
 import UserProfile from './UserProfile/UserProfile';
 import LastCars from './LastCars/LastCars';
+import Perfil from './Perfil/Perfil'
 
 
 import './Dashboard.css';
@@ -31,16 +32,17 @@ export default function Dashboard() {
     axios.get('/users/logout');
     history.push('/')
   }
+  const handleClick = () => {
+    history.push(`/dashboard/users/user-profile/${user.id}`)
+  }
 
   if(user)
     return (
       <div className="Dashboard">
         <Nav className="flex-column">
           <hr />
-          <Link>
-            <img width="130" height="130" src={user.image} alt="User" />
-          </Link>
-          <Nav.Item>{user.name}</Nav.Item>
+          <img width="130" height="130" src={user.image} alt="User" onClick={handleClick} />
+          <Nav.Item onClick={handleClick}>{user.name}</Nav.Item>
           <Nav.Item>{user.email}</Nav.Item>
           <Button variant="outline-danger" onClick={handleLogout}>Logout</Button>
           <hr />
@@ -49,6 +51,9 @@ export default function Dashboard() {
         </Nav>
         <Router>
           <Switch>
+          <Route path="/dashboard/users/user-profile/:id">
+              <Perfil user={user} />
+            </Route>
             <Route path="/dashboard/users/edit/:id">
               <AlterarUser user={user} />
             </Route>

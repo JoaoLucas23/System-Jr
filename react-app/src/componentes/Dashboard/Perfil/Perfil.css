@@ -1,4 +1,67 @@
-.titlepage{
-    font-size: 25px;
-    color: white;
+.Perfil{
+    background-image: linear-gradient(#000766,#010112);
+    height: 100%;
 }
+
+.CONTAINER{
+    height: auto;
+    width: 75%;
+    margin-left: 25%;
+    display: flex;
+}
+
+.left-side{
+    padding: 5%;
+    width: 50%;
+}
+.right-side{
+    padding-top: 3%;
+    width: 50%;
+    display: inline-flex;
+    flex-wrap: wrap;
+}
+
+  #perfil-Cartao{
+    align-content: center;
+  }
+
+  #perfil-Image{
+    max-height: 210px;
+    width: auto;
+    align-self: center;
+  }
+
+  .perfil-user-Type{
+    font-family: 'Noto Sans';
+    font-size: 13px;
+    text-align: left;
+    color: black;
+    margin-bottom: 0%;
+  }
+
+  .perfil-user-Data{
+    font-size: 15px;
+    color: black;
+    text-align: left;
+    font-family: 'Rubik';
+    margin-top: 0%;
+  }
+
+    #perfil-user-edit-but{
+      margin-top: 5%;
+      margin-right: 10%;
+      background-color: white;
+      color: #ffd500;
+    }
+
+    #perfil-user-edit-but:hover{
+      background-color: #ffdd30;
+      color: #f0efe4;
+    }
+
+    #perfil-user-delet-but{
+      margin-top: 5%;
+    }
+    #perfil-user-delet-but:hover{
+      color: #f0efe4;
+    }

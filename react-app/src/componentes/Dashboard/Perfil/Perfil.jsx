@@ -1,70 +1,71 @@
-import React from 'react';
-import { Container, Row, Col, Card, CardBody, CardText, ListGroup, ListGroupItem } from 'reactstrap';
-import './Perfil.css'
-export default function Home() {
-    return (
-        <>
+import { useState, useEffect } from 'react';
+import { useParams, Link, useHistory } from 'react-router-dom';
+import axios from 'axios';
+import { Button, Card } from 'react-bootstrap';
+import './Perfil.css';
+import ProductCard from '../ProductCard/ProductCard'
 
-            <Row  className= "mt-5 text-center">
-                <p className="titlepage">Página de Perfil</p>
-            </Row>
+export default function Perfil(props) {
+  const history = useHistory();
+  const [user, setUser] = useState();
+  let { id } = useParams();
 
-            <Row className= "m-5">
-                <Col xs="4">
-                    <Card>
-                        <img width="40%" src='https://engenharia360.com/wp-content/uploads/2019/05/esta-pessoa-nao-existe-engenharia360-4.png' alt="foto de perfil"/>
-                        <CardBody>
-                            <CardText>Felipe Costa</CardText>
-                        </CardBody>
-                    </Card>
-                </Col>
-                    
-                <Col>
-                    <Card>
-                    <ListGroup>
-                        <ListGroupItem disabled tag="a" href="#">Felipe Costa Lopes</ListGroupItem>
-                        <ListGroupItem disabled tag="a" href="#">felcoslop@ufmg.br</ListGroupItem>
-                        <ListGroupItem disabled tag="a" href="#">31987895872</ListGroupItem>
-                        <ListGroupItem disabled tag="a" href="#">******</ListGroupItem>
-                    </ListGroup>
-                    </Card>
-                </Col>
-            </Row>
+  useEffect(() => 
+    axios.get(`/users/user/${id}`)
+      .then( (res) => setUser(res.data) )
+      .catch( (err) => console.log(err.response) ),
+  [id])
+  const handleDelete = (event) => {
+    event.preventDefault();
+    axios.delete(`/users/user/${id}`)
+      .then( (res) => history.push('/dashboard/users') )
+      .catch( (err) => console.log(err.response) );
+  }
 
-            <Row  className= "mt-5 text-center">
-                <p className="titlepage">Carros Adicionados</p>
-            </Row>
+  const [product, setProduct] = useState();
 
-            <Row className= "m-5">
-                <Col xs="4">
-                    <div className="ProductCard grid-item">
-                        <img width="220px" src='https://s2.glbimg.com/3cbcYz2Vy0qQG2-_y87RARlVnVM=/0x0:620x413/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_cf9d035bf26b4646b105bd958f32089d/internal_photos/bs/2020/2/9/kUgT73SAawl5udid0DPA/2019-03-30-f-.jpg' alt="carro" />
-                        <p className="name">Ferrari</p>
-                        <p className="price">R$22.000,00</p>
-                        <p className="description">teste</p>
-                    </div>
-                </Col>
+  useEffect(() =>
+    axios.get(`/cars/user-cars/${id}`)
+      .then( (res) => setProduct(res.data) )
+      .catch( (err) => console.log(err.response) ),
+  [id]);
 
-                <Col xs="4">
-                    <div className="ProductCard grid-item">
-                        <img width="220px" src='https://s2.glbimg.com/3cbcYz2Vy0qQG2-_y87RARlVnVM=/0x0:620x413/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_cf9d035bf26b4646b105bd958f32089d/internal_photos/bs/2020/2/9/kUgT73SAawl5udid0DPA/2019-03-30-f-.jpg' alt="carro" />
-                        <p className="name">Ferrari</p>
-                        <p className="price">R$22.000,00</p>
-                        <p className="description">teste</p>
-                    </div>
-                </Col>
+  let loadedProducts = [];
+  const productsToCards = (element, index) =>
+    <Link className="hoverable" key={index}
+    to={`/dashboard/products/${element.id}`}>
+      <ProductCard key={index} user={element} />
+    </Link>
+  if(product) loadedProducts = product.map(productsToCards);
 
-                 <Col xs="4">
-                    <div className="ProductCard grid-item">
-                        <img width="220px" src='https://s2.glbimg.com/3cbcYz2Vy0qQG2-_y87RARlVnVM=/0x0:620x413/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_cf9d035bf26b4646b105bd958f32089d/internal_photos/bs/2020/2/9/kUgT73SAawl5udid0DPA/2019-03-30-f-.jpg' alt="carro" />
-                        <p className="name">Ferrari</p>
-                        <p className="price">R$22.000,00</p>
-                        <p className="description">teste</p>
-                    </div>
-                </Col>
-                
-            </Row>
-
-    </>
-    )
+  const disableButton = () => ( (props.user.role !== 'admin') && (props.user.id !== (user ? user.id : null)) ) ? true : false;
+  const disableDeleteButton = () => (props.user.role !== 'admin') ? true : false;
+  return (
+    <div className="Perfil">
+    <section className="CONTAINER">
+        <div className="left-side">
+            <Card id="perfil-cartao" style={{ width: '85%'}}>
+                <Card.Img id="perfil-user-Image" variant="top" src={user ? user.image : ''} />
+                <Card.Body>
+                    <p className="perfil-user-Type">Nome: <Card.Text className="data">{user ? user.name : ''}</Card.Text></p>
+                    <p className="perfil-user-Type">Email: <Card.Text className="data">{user ? user.email : ''}</Card.Text></p>
+                    <p className="perfil-user-Type">Telefone: <Card.Text className="data">{user ? user.phone : ''}</Card.Text></p>
+                    <p className="perfil-user-Type">Papel: <Card.Text className="data">{user ? user.role : ''}</Card.Text></p>
+                    <Link style={disableButton() ? {pointerEvents: 'none'}:null } to={`/dashboard/users/edit/${id}`}>
+                        <Button id="perfil-user-edit-but" disabled={disableButton() ? true : false} variant="outline-warning">
+                        Editar Usuário
+                        </Button>
+                    </Link>
+                    <Button id="perfil-user-delet-but" disabled={disableDeleteButton() ? true : false} onClick={handleDelete} variant="outline-danger">
+                        Deletar Usuário
+                    </Button>
+                </Card.Body>
+            </Card>
+        </div>
+        <div className="right-side">
+        {loadedProducts}
+        </div>
+      </section>
+    </div>
+  )
 }
