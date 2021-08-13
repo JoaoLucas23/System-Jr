@@ -19,7 +19,7 @@ export default function Form() {
 
     function handleSubmit(event) {
         event.preventDefault();
-        axios.post('/users/login', {email, password}).then((res) => history.push('/dashboard'))
+        axios.post('/users/login', {email, password}).then((res) => history.push('/dashboard/home'))
         .catch((err) => console.log(err));
     }
 

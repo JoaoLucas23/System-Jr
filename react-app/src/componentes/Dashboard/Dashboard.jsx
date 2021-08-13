@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { Nav, Button } from 'react-bootstrap';
 import { useHistory } from 'react-router';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Link, BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Product from './Products/Products';
 import Users from './Users/Users';
@@ -11,7 +11,8 @@ import CadastroProduto from './CadastrarProduto/CadastroProduto';
 import AlterarProduto from './AlterarProduto/AlteraProduto';
 import Home from '../Home/Home'
 import AlterarUser from './AlterarUsuario/AlterarUsuario';
-import UserProfile from './UserProfile/UserProfile'
+import UserProfile from './UserProfile/UserProfile';
+import LastCars from './LastCars/LastCars';
 
 
 import './Dashboard.css';
@@ -35,9 +36,10 @@ export default function Dashboard() {
     return (
       <div className="Dashboard">
         <Nav className="flex-column">
-          <Nav.Item as="h1">Dashboard</Nav.Item>
           <hr />
-          <img width="130" height="130" src={user.image} alt="User" />
+          <Link>
+            <img width="130" height="130" src={user.image} alt="User" />
+          </Link>
           <Nav.Item>{user.name}</Nav.Item>
           <Nav.Item>{user.email}</Nav.Item>
           <Button variant="outline-danger" onClick={handleLogout}>Logout</Button>
@@ -67,6 +69,9 @@ export default function Dashboard() {
             </Route>
             <Route path="/dashboard/products">
               <Product />
+            </Route>
+            <Route path="/dashboard/home">
+              <LastCars />
             </Route>
           </Switch>
         </Router>

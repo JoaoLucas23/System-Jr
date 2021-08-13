@@ -1,0 +1,27 @@
+    .title{
+        margin-left: 35%;
+        padding-top: 5%;
+        font-family: 'Rubik';
+        font-size: 30px;
+        font-weight: bold;
+        color: #000766;
+    }
+
+    .itens {
+      display: flex;
+      height: 100%;
+      margin-left: 35%;
+      padding-top: 5%;
+      align-items: center;
+    }
+    
+    .hoverable {
+      text-align: center;
+      text-decoration: none;
+      font-family: 'Rubik';
+    }
+  
+    .Product{
+      background-color: #f0efe4;
+    }
+  

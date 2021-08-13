@@ -8,6 +8,10 @@
     margin-inline: auto;
 }
 
+.last-cars{
+    margin-left: 30%;
+}
+
 #link{
     color: #000766;
     text-decoration:underline;

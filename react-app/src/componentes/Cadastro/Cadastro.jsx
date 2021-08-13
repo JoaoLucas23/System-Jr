@@ -35,7 +35,7 @@ export default function CadastroUsuario() {
   const handleSubmit = (event) => {
     event.preventDefault();
     axios.post('/users', formValues)
-      .then( (res) => {history.push('/login') 
+      .then( (res) => {history.push('/dashboard/home') 
         alert("Cadastro realizado com sucesso!")})
       .catch( (err) => {console.log(err.response) 
                         alert(err.message)})

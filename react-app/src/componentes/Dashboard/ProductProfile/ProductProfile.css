@@ -1,6 +1,7 @@
  .ProductProfile {
     text-align: center;
     margin-left: 30%;
+    background-color: #f0efe4;
   }
 
   #cartao{
@@ -46,4 +47,14 @@
     }
     #delet-but:hover{
       color: #f0efe4;
+    }
+
+    #dono{
+      color: #000766;
+    }
+
+    #dono:hover{
+      text-decoration: underline;
+      text-decoration-color: #000766;
+      cursor:pointer;
     }

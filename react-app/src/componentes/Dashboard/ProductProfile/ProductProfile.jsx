@@ -32,6 +32,12 @@ export default function ProductProfile(props) {
     };
   }, [product]);
 
+  const handleClick = (event) => {
+    if(product){
+    history.push(`/dashboard/users/${product.UserId}`);
+    }
+  }
+
   return (
     <div className="ProductProfile">
       <Card id="cartao" style={{ width: '50%'}}>
@@ -45,9 +51,9 @@ export default function ProductProfile(props) {
                   <p className="type">Kilometragem Atual: <Card.Text className="data">{product ? product.km : ''} km</Card.Text></p>
                   <p className="type">Descrição: <Card.Text className="data">{product ? product.description : ''}</Card.Text></p>
                   <p className="type">Condição: <Card.Text className="data">{product ? product.condition : ''}</Card.Text></p>
-                  <Link to={`/dashboard/users/user-profile/${user.id}`}>
-                    <p className="type">Dono: <Card.Text className="data">{user ? user.name : ''}</Card.Text></p>
-                  </Link>
+                  <p className="type">Dono:
+                      <Card.Text id="dono" onClick={handleClick} className="data">{user ? user.name : ''}</Card.Text>
+                  </p>
                   <Link style={disableButton() ? {pointerEvents: 'none'} : null} to={`/dashboard/products/edit/${id}`}>
                     <Button id="edit-but" disabled={disableButton() ? true : false} variant="outline-warning">
                       Editar Produto
