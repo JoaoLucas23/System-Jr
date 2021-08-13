@@ -57,13 +57,13 @@ export default function AlterarProduto() {
           <Form.Control name="name" defaultValue={user.name} onChange={inputChange} type="text" placeholder="Nome" />
         </Form.Group>
         <Form.Group className="type-spc" controlId="formbasicBrand">
-          <Form.Control name="email" defaultValue={user.email} onChange={inputChange} type="text" placeholder="Email" />
+          <Form.Control name="email" defaultValue={user.email} onChange={inputChange} type="email" placeholder="Email" />
         </Form.Group>
         <Form.Group className="type-spc" controlId="formbasicColor">
           <Form.Control name="phone" defaultValue={user.phone} onChange={inputChange} type="text" placeholder="Telefone" />
         </Form.Group>
         <Form.Group className="type-spc" controlId="formbasicImage">
-          <Form.Control name="image" defaultValue={user.image} onChange={inputChange} type="text" placeholder="Imagem" />
+          <Form.Control name="image" defaultValue={user.image} onChange={inputChange} type="url" placeholder="Imagem" />
         </Form.Group>
           <Button variant="warning" type="submit">Concluir Edição</Button>   
       </Form>

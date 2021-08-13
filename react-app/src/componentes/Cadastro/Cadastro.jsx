@@ -1,8 +1,7 @@
 import axios from 'axios';
 import { useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Nav } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
-import {Link} from 'react-router-dom';
 
 import './Cadastro.css';
 
@@ -43,13 +42,11 @@ export default function CadastroUsuario() {
   }
   return (
     <div className="CadastroUsuario">
-      <div class="topnav">
-      <Link to="/Home" className="linknav">Home</Link>
-      <Link to="/login" className="linknav">Carros</Link>
-      <Link to="/login" className="linknav">Usuários</Link>
-      <Link to="/cadastro" className="linknav">Cadastro</Link>
-      <Link to="/login" className="linknav">Login</Link>
-      </div> 
+      <Nav class="topnav">
+            <Nav.Link href="/home" id="linknav">Home</Nav.Link>
+            <Nav.Link href="/cadastro" id="linknav">Cadastro</Nav.Link>
+            <Nav.Link href="/login" id="linknav">Login</Nav.Link>
+      </Nav>   
       <div className = "divCadastro">
       <Form onSubmit={handleSubmit} className="formUsuario">
         <h1 className="cad_title">Cadastro</h1>

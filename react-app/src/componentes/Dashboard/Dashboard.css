@@ -8,10 +8,6 @@
     margin-inline: auto;
 }
 
-.last-cars{
-    margin-left: 30%;
-}
-
 .Cont{
     height: 100%;
     display: flex;
@@ -20,7 +16,6 @@
 
 .right-Itens{
     width: 80%;
-    margin-left: 10%;
 }
 
 #link{

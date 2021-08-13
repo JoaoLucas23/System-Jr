@@ -1,20 +1,19 @@
 import './Login.css';
 import Welcome from './Welcome/Welcome';
 import Form from './Form/Form';
-import {Link} from 'react-router-dom';
+import { Nav } from 'react-bootstrap';
 
 export default function Login() {
 
     return (
         <div className="Login">
 
-            <div class="topnav">
-            <Link to="/Home" className="linknav">Home</Link>
-            <Link to="/login" className="linknav">Carros</Link>
-            <Link to="/login" className="linknav">Usuários</Link>
-            <Link to="/cadastro" className="linknav">Cadastro</Link>
-            <Link to="/login" className="linknav">Login</Link>
-            </div>    
+            <Nav class="topnav">
+                <Nav.Link href="/home" id="linknav">Home</Nav.Link>
+                <Nav.Link href="/cadastro" id="linknav">Cadastro</Nav.Link>
+                <Nav.Link href="/login" id="linknav">Login</Nav.Link>
+            </Nav>   
+
             <section className="container">
                 <div className="left">
                     <Welcome />
