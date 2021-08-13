@@ -1,10 +1,24 @@
-  
-.formUsuario{
-  padding-top: 10% ;
-  margin-left: 20%;
-  margin-right: 20%;
-  width: 70%;
 
+.CadastroUsuario{
+  background-image: linear-gradient(#000766,#010112);
+  height: 100%;
+}
+
+.divCadastro{
+  padding-left: 13%;
+  padding-top: 10%;
+  width: 100%;
+  }
+
+.formUsuario{
+  padding-bottom: 3%;
+  padding-top: 4%;
+  padding-left: 7%;
+  padding-right: 0%;
+  background-color: white;
+  border-radius: 20px;
+
+  width: 85%;
 }
 
 .formUsuario.form *{
@@ -13,9 +27,11 @@ margin-bottom: 50%;
 
 #cad-but{
   margin-top: 3.5%;
+  margin-bottom: 0%;
   border-color: #000766;
   background-color: white;
   color: #000766;
+  padding: auto;
 }
 
 #cad-but:hover{

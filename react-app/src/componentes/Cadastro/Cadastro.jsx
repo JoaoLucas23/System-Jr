@@ -42,6 +42,7 @@ export default function CadastroUsuario() {
   }
   return (
     <div className="CadastroUsuario">
+      <div className = "divCadastro">
       <Form onSubmit={handleSubmit} className="formUsuario">
         <Form.Group className="type-spc" controlId="formbasicName">
           <Form.Control name=  "name" onChange={inputChange} type="text" placeholder= "name" />
@@ -60,6 +61,7 @@ export default function CadastroUsuario() {
         </Form.Group>
           <Button id="cad-but" variant="success" type="submit">Concluir Cadastro</Button>
       </Form>
+      </div>
     </div>
   )
 }
