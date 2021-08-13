@@ -54,10 +54,8 @@ export default function Dashboard() {
           <Nav.Item id="to-user" onClick={handleClick}>{user.name}</Nav.Item>
           </Nav.Link>
           <Nav.Item id="email">{user.email}</Nav.Item>
-          <Button variant="outline-danger" onClick={handleLogout}>Logout</Button>
           <hr />
-          <Nav.Link id="side-link" href="/dashboard/users">Usuários</Nav.Link>
-          <Nav.Link id="side-link" href="/dashboard/products">Carros</Nav.Link>
+          <Button variant="outline-danger" onClick={handleLogout}>Logout</Button>
         </Nav>
         <div className="right-Itens">
         <Router>
