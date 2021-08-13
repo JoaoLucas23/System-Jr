@@ -44,20 +44,21 @@ export default function CadastroUsuario() {
     <div className="CadastroUsuario">
       <div className = "divCadastro">
       <Form onSubmit={handleSubmit} className="formUsuario">
+        <h1 className="cad_title">Cadastro</h1>
         <Form.Group className="type-spc" controlId="formbasicName">
-          <Form.Control name=  "name" onChange={inputChange} type="text" placeholder= "name" />
+          <Form.Control name=  "name" onChange={inputChange} type="text" placeholder= "Nome" />
         </Form.Group>
         <Form.Group className="type-spc" controlId="formbasicEmail">
-          <Form.Control name="email" onChange={inputChange} type="text" placeholder="email" />
+          <Form.Control name="email" onChange={inputChange} type="email" placeholder="Email" />
         </Form.Group>
         <Form.Group className="type-spc" controlId="formbasicPassword">
-          <Form.Control name="password" onChange={inputChange} type="password" placeholder="password" />
+          <Form.Control name="password" onChange={inputChange} type="password" placeholder="Senha" />
         </Form.Group>
         <Form.Group className="type-spc" controlId="formbasicPhone">
-          <Form.Control name="phone" onChange={inputChange} type="text" placeholder="phone" />
+          <Form.Control name="phone" onChange={inputChange} type="tel" placeholder="Telefone" />
         </Form.Group>
         <Form.Group className="type-spc" controlId="formbasicImage">
-          <Form.Control name="image" onChange={inputChange} type="text" placeholder="Image" />
+          <Form.Control name="image" onChange={inputChange} type="url" placeholder="Link da Imagem" />
         </Form.Group>
           <Button id="cad-but" variant="success" type="submit">Concluir Cadastro</Button>
       </Form>

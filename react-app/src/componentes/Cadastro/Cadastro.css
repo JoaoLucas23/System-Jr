@@ -26,17 +26,26 @@ margin-bottom: 50%;
 }
 
 #cad-but{
-  margin-top: 3.5%;
-  margin-bottom: 0%;
-  border-color: #000766;
-  background-color: white;
-  color: #000766;
-  padding: auto;
+  background-color: #ffdd30;
+  color: #010112;
+  padding: 8px 16px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  height: 20%;
+  width: 35%;
+  font-size: 120%;
+  border-radius: 24px;
+  text-align: center;
+  margin-left: 28%;
+  transition: all 500ms;
 }
 
 #cad-but:hover{
-  background-color: #000766;
-  color: #f0efe4;
+  transform: scale(0.95);
+  transition: all 500ms;
+  background-color: #eecd29;
+  font-style: italic;
 }
 
 .type-spc{
@@ -44,4 +53,9 @@ margin-bottom: 50%;
   color: #000766;
   font: 'Noto Sans';
   font-size: 17.5px;
+}
+
+
+.cad_title{
+  margin-left: 38%;
 }
