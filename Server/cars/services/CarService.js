@@ -10,9 +10,18 @@ class CarService {
   async getAllCars() {
     const result = await Car.findAll({raw: true, attributes:
       {
-        exclude: ['createdAt', 'updatedAt'],
+        exclude: ['updatedAt'],
       },
     });
+    return result;
+  }
+
+  async getLastThreeCars() {
+    const result = await Car.findAll(
+      {limit: 3,
+        order: [['createdAt', 'DESC']],
+        exclude: ['updatedAt'],
+      });
     return result;
   }
 

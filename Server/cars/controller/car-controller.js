@@ -44,6 +44,17 @@ router.get('/', jwtMiddleware,
     }
   });
 
+router.get('/last-cars', jwtMiddleware,
+  async (req, res, next) => {
+    try {
+      const cars = await CarService.getLastThreeCars();
+      res.status(200).json(cars);
+    } catch (error) {
+      next(error);
+    }
+  });
+
+
 router.get('/car/:id', jwtMiddleware,
   async (req, res, next) => {
     try {
